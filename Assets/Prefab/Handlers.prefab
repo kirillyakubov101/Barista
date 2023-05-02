@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4496509955585924232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4496509955585924233}
+  - component: {fileID: 4496509955585924234}
+  - component: {fileID: 5662978032944101180}
+  m_Layer: 0
+  m_Name: Handlers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4496509955585924233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496509955585924232}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4496509955585924234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496509955585924232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef22823bddef2d645837daf0c3f797ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sandwich:
+    m_AssetGUID: dbc9a6f7e68460d44bf5f4f7da3565e5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  m_coffee:
+    m_AssetGUID: 31c114772787fd342b540e578d85bdf8
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  m_doughnutChocolate:
+    m_AssetGUID: 66949ac06a17d4241897958091da78e1
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  m_doughnutVanil:
+    m_AssetGUID: 7150674cb4b7f824f90455148d9bdf12
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  m_doughnutCherry:
+    m_AssetGUID: 15d15cc4d656ed149a4189976330827f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  m_orangeJuice:
+    m_AssetGUID: ad993b9a6ff4f354ba955738c56c408d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  m_Lemonade:
+    m_AssetGUID: 7093fcd9800863944b61eba3ef2e7a2e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  m_Croissant:
+    m_AssetGUID: dc304d2ba7012b74197fffce76d26648
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  m_Toast:
+    m_AssetGUID: ef7036ce50047774680c030b948cabf5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+--- !u!114 &5662978032944101180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496509955585924232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83229ba2f9fc7a240a5726d72ba3a305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FoodImages:
+  - m_sprite: {fileID: 21300000, guid: cc613b3129ae6483bba2736f8bd05473, type: 3}
+    m_foodType: 7
+  - m_sprite: {fileID: 21300000, guid: 82f105e42ed6e4e5ba846ee18f9bdcf4, type: 3}
+    m_foodType: 1
+  - m_sprite: {fileID: 21300000, guid: 5f49a0213511a4e7eae4a882eab9116d, type: 3}
+    m_foodType: 0
+  - m_sprite: {fileID: 21300000, guid: 6004ffbaeedfb44298374c237a21cbf1, type: 3}
+    m_foodType: 3
+  - m_sprite: {fileID: 21300000, guid: adbd6b6d02ed54f02bfd0485a39d2ea8, type: 3}
+    m_foodType: 6
+  - m_sprite: {fileID: 21300000, guid: 48f7a4c6c857f4c3da7dfb3e85b66e63, type: 3}
+    m_foodType: 5
+  - m_sprite: {fileID: 21300000, guid: a1a6383d723304a09b1610f669baa253, type: 3}
+    m_foodType: 4
+  - m_sprite: {fileID: 21300000, guid: 1befce7aa164647fd8b3d58b79c85dc6, type: 3}
+    m_foodType: 2

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Products
+  m_EditorClassIdentifier: 
+  m_GroupName: Products
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 034f9ddcee35189418ce3b11f61a836d
+  m_SerializeEntries:
+  - m_GUID: dbc9a6f7e68460d44bf5f4f7da3565e5
+    m_Address: Assets/Prefab/FoodMenu/Sandwich_model.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66949ac06a17d4241897958091da78e1
+    m_Address: Assets/Prefab/FoodMenu/Dougnut_model.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31c114772787fd342b540e578d85bdf8
+    m_Address: Assets/Prefab/FoodMenu/Coffee_model.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad993b9a6ff4f354ba955738c56c408d
+    m_Address: Assets/Prefab/FoodMenu/OrangeJuice.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7093fcd9800863944b61eba3ef2e7a2e
+    m_Address: Assets/Prefab/FoodMenu/Lemonade.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc304d2ba7012b74197fffce76d26648
+    m_Address: Assets/Prefab/FoodMenu/Croissant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7150674cb4b7f824f90455148d9bdf12
+    m_Address: Assets/Prefab/FoodMenu_Adressables/VanilDouhnut_model.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15d15cc4d656ed149a4189976330827f
+    m_Address: Assets/Prefab/FoodMenu_Adressables/cherryDougnut.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef7036ce50047774680c030b948cabf5
+    m_Address: Assets/Prefab/FoodMenu_Adressables/FrenchToast_model.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a29a0c6bdc863d2448eb89fc6e9f40cd, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 32cbaecfa4354214695d4601695bea79, type: 2}
+    - {fileID: 11400000, guid: 281433dff86255e438761c32834fd3d6, type: 2}
+    - {fileID: 11400000, guid: 658b3fd5749ab8e48bc832c6d24c7c93, type: 2}

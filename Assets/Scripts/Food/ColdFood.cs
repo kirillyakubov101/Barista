@@ -1,0 +1,19 @@
+using Barista.Core;
+using Barista.Machines;
+
+namespace Barista.Food
+{
+    public class ColdFood : SimpleTake
+    {
+        public override void DoAction()
+        {
+            base.m_state = ItemState.REFILL;
+            m_graphics.SetActive(false);
+            m_placeHolder.SetActive(true);
+
+           Microwave.Instance.AddFoodToMicro();
+        }
+
+
+    }
+}
