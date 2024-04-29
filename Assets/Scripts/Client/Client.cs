@@ -1,4 +1,3 @@
-
 using System.Collections;
 using UnityEngine;
 
@@ -12,21 +11,15 @@ namespace Barista.Clients
 
         readonly int hasIndex = Animator.StringToHash("Idle");
 
-        private static bool firstTime = true;
-
         public Transform m_goal;
+        public string clientName;
 
-        public void InitClient(Transform goal)
+        public void InitClient(Transform goal,string cName)
         {
             m_goal = goal;
+            clientName = cName;
 
             StartCoroutine(ProceedTowardsDesk());
-        }
-
-      
-        private void MoveForward()
-        {
-
         }
 
 
@@ -53,13 +46,34 @@ namespace Barista.Clients
                 timer += Time.deltaTime;
                 yield return null;
             }
+        }
 
-            yield return new WaitForSeconds(8f);
-            if(firstTime)
+        public void WalkTowardsEmptySpace()
+        {
+            StartCoroutine(WalkProcess());
+        }
+
+        private IEnumerator WalkProcess()
+        {
+            Transform availableTransform = m_goal;
+            Vector3 goal = availableTransform.position;
+            Quaternion lookDir = Quaternion.LookRotation(goal - transform.position);
+
+            transform.rotation = lookDir;
+
+            while (Vector3.Distance(transform.position, goal) > 0.1f)
             {
-                firstTime = false;
-                ClientManager.Instance.DespawnClient();
-                Destroy(gameObject);
+                transform.position = Vector3.Lerp(transform.position, goal, m_walkCurve.Evaluate(Time.time) * Time.deltaTime);
+                yield return null;
+            }
+
+            float timer = 0f;
+            while (timer < 2f)
+            {
+                transform.forward = Vector3.Lerp(transform.forward, availableTransform.forward, Time.deltaTime * 2.5f);
+
+                timer += Time.deltaTime;
+                yield return null;
             }
         }
 

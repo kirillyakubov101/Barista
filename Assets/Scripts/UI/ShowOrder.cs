@@ -11,6 +11,7 @@ namespace Barista.UI
         [SerializeField] private GameObject[] m_orderSlots;
         [SerializeField] private Image[] m_imageSlots;
 
+
         private void OnEnable()
         {
             MenuFactory.OnRecipeGenerated += ShowClientOrder;

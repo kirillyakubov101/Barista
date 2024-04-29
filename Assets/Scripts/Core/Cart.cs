@@ -22,6 +22,12 @@ namespace Barista.Core
             return m_count >= 3;
         }
 
+        //TODO: DELETE TEST
+        private void Start()
+        {
+            MenuFactory.Instance.GenerateNewRecipe();
+        }
+
 
         public async void PopulateCart(FoodType food)
         {
@@ -53,11 +59,13 @@ namespace Barista.Core
             {
                 //Correct
                 print("yes");
+                MenuFactory.Instance.GenerateNewRecipe();
             }
             else
             {
                 //Wrong
                 print("no");
+                MenuFactory.Instance.PrintRecipe();
             }
 
            //Switch to another recipe

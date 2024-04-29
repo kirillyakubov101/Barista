@@ -1058,7 +1058,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4283360277044048698}
-  - component: {fileID: 780553086}
   - component: {fileID: 6300178370400434829}
   - component: {fileID: 8006502217295953144}
   m_Layer: 0
@@ -1084,27 +1083,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &780553086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4283360277044048702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3eba8b9fcb40644f87d3c6796212f31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_container: {fileID: 0}
-  m_orderSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_imageSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!95 &6300178370400434829
 Animator:
   serializedVersion: 4
@@ -1162,6 +1140,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_goal: {fileID: 0}
+  clientName: 
 --- !u!1 &4655268216358209671
 GameObject:
   m_ObjectHideFlags: 0

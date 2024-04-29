@@ -48,11 +48,11 @@ namespace Barista.Menu
                 }
                 
             }
-
+            PrintRecipe(); //Debug show recipe log
             OnRecipeGenerated?.Invoke();
         }
 
-        private void PrintRecipe()
+        public void PrintRecipe()
         {
             foreach(var ele in m_CurrentRecipe)
             {
