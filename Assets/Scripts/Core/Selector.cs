@@ -9,11 +9,15 @@ namespace Barista.Core
         [SerializeField] private LayerMask layer;
         [SerializeField] private float m_clickCd = 0.3f;
         [SerializeField] private float m_RayCastDistance = 100f;
-        [SerializeField] private CameraController m_CamController;
 
-      
         private bool isClicked = false;
         private ISelectable m_selected;
+        private CameraController m_CamController;
+
+        private void Awake()
+        {
+            m_CamController = GetComponent<CameraController>();
+        }
 
         float timer = 0f;
         private void Update()
@@ -25,7 +29,7 @@ namespace Barista.Core
             }
             
           
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 isClicked = true;
             }

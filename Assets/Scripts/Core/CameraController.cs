@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using MyUtils;
@@ -17,33 +16,13 @@ namespace Barista.MyCamera
         private int horizontalValue;
         private float time = 0;
         private int index = 1;
-        private int prevIndex = 1;
 
-        private enum CameraState
-        {
-            LEFT, CENTER, RIGHT
-        }
 
-        Dictionary<CameraState, Camera> m_positions = new Dictionary<CameraState, Camera>();
-
+        //Let all the "Look At Camera" UIs know about camera switch
+        //TODO: Not sure this is a MUST
         private void Start()
         {
-            m_positions.Add(CameraState.LEFT, m_cameras[0]);
-            m_positions.Add(CameraState.CENTER, m_cameras[1]);
-            m_positions.Add(CameraState.RIGHT, m_cameras[2]);
-
             OnCameraSwitch?.Invoke(m_cameras[1]);
-        }
-
-        private CameraState IntToEnum(int val)
-        {
-            switch(val)
-            {
-                case 0: return CameraState.LEFT;
-                case 1: return CameraState.CENTER;
-                case 2: return CameraState.RIGHT;
-                default: return CameraState.CENTER;  
-            }
         }
 
 
@@ -52,14 +31,17 @@ namespace Barista.MyCamera
             horizontalValue = (int)Input.GetAxisRaw(InputX);
             if (horizontalValue != 0 && time > pressCd)
             {
-                index += horizontalValue;
-                index = Mathf.Clamp(index, 0, 2);
-                if(prevIndex != index)
-                {
-                    Rotate();
-                }
-                
-                time = 0;
+                //nextIndex = (currentIndex + 1) % collectionSize
+                //nextIndex = (currentIndex - 1 + collectionSize) % collectionSize;
+               
+                if(horizontalValue > 0)
+                    index = (index + 1) % 3;
+                else
+                    index = (index - 1 + 3) % 3;
+
+                Rotate();
+
+                time = 0f;
             }
             if(time < pressCd + 2f)
             {
@@ -83,8 +65,6 @@ namespace Barista.MyCamera
                     OnCameraSwitch.Invoke(m_cameras[i]);
                 }
             }
-
-            prevIndex = index;
         }
 
     }
