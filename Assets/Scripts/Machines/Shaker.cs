@@ -19,6 +19,8 @@ namespace Barista.Machines
             m_collder.enabled = false;
         }
 
+
+        //Animation event
         private void EnableCollider()
         {
             m_collder.enabled = true;

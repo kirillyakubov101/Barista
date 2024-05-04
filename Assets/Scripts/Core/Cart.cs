@@ -68,9 +68,6 @@ namespace Barista.Core
                 MenuFactory.Instance.PrintRecipe();
             }
 
-           //Switch to another recipe
-           //TODO
-
             //clear the cart
             foreach (var ele in m_pickedItems)
             {
