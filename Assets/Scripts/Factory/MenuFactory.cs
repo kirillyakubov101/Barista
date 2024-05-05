@@ -24,14 +24,14 @@ namespace Barista.Menu
 
         private Dictionary<FoodType, int> m_CurrentRecipe = new Dictionary<FoodType, int>();
 
-        public Dictionary<FoodType, int> CurrentRecipe { get => m_CurrentRecipe;  }
+        public IReadOnlyDictionary<FoodType, int> CurrentRecipe { get => m_CurrentRecipe;  }
 
 
         public void GenerateNewRecipe()
         {
             m_CurrentRecipe.Clear();
             int amountOfItems = Random.Range(1, 4);
-            
+           
 
             for (int i = 0; i < amountOfItems; i++)
             {
@@ -51,12 +51,22 @@ namespace Barista.Menu
             OnRecipeGenerated?.Invoke();
         }
 
+        public void RemoveItemsFromRecipe(FoodType key)
+        {
+            m_CurrentRecipe[key]--;
+            if (m_CurrentRecipe[key] <= 0)
+            {
+                m_CurrentRecipe.Remove(key);
+            }
+        }
+
         public void PrintRecipe()
         {
             foreach(var ele in m_CurrentRecipe)
             {
                 print(ele);
             }
+
         }
     }
 }

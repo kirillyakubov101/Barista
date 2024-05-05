@@ -12,16 +12,6 @@ namespace Barista.UI
         [SerializeField] private Image[] m_imageSlots;
 
 
-        private void OnEnable()
-        {
-            MenuFactory.OnRecipeGenerated += ShowClientOrder;
-        }
-
-        private void OnDestroy()
-        {
-            MenuFactory.OnRecipeGenerated -= ShowClientOrder;
-        }
-
         private void ShowClientOrder()
         {
             m_container.SetActive(true);

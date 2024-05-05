@@ -65,7 +65,7 @@ namespace Barista.Core
             {
                 //Wrong
                 print("no");
-                MenuFactory.Instance.PrintRecipe();
+                MenuFactory.Instance.GenerateNewRecipe();
             }
 
             //clear the cart
@@ -91,11 +91,7 @@ namespace Barista.Core
                 FoodType key = m_pickedFoodTypes[i];
                 if (recipe.ContainsKey(key))
                 {
-                    recipe[key]--;
-                    if(recipe[key] <= 0)
-                    {
-                        recipe.Remove(key);
-                    }
+                    MenuFactory.Instance.RemoveItemsFromRecipe(key); 
                 }
                 else
                 {
