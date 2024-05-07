@@ -11,6 +11,10 @@ namespace Barista.Machines
         [SerializeField] private float m_prepareTime = 3f;
         [SerializeField] private Animator m_animator;
 
+        [SerializeField] Material m_preparationScreenMat;
+        [SerializeField] Material m_ReadyScreenMat;
+        [SerializeField] private Transform m_preparationScreen;
+
         readonly int hashIndex1 = Animator.StringToHash("Micro");
         readonly int hashIndex2 = Animator.StringToHash("OpenMicro"); 
         readonly int hashIndex3 = Animator.StringToHash("CloseMicro");
@@ -20,6 +24,7 @@ namespace Barista.Machines
         public void AddFoodToMicro()
         {
             if (!m_canMicro) { return; }
+            m_preparationScreen.GetComponent<MeshRenderer>().material = m_preparationScreenMat;
             m_canMicro = false;
             m_animator.Play(hashIndex1);
             m_dummyFood.SetActive(true);
@@ -39,6 +44,7 @@ namespace Barista.Machines
             m_animator.Play(hashIndex2);
             m_dummyFood.SetActive(false);
             m_preparedFood.SetActive(true);
+            m_preparationScreen.GetComponent<MeshRenderer>().material = m_ReadyScreenMat;
         }
 
         public void CloseMicro()
