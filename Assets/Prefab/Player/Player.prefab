@@ -175,8 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54756985c96cdb42a160f97e725fc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 6917564259816791402}
-  layer:
+  m_Camera: {fileID: 0}
+  m_Layer:
     serializedVersion: 2
     m_Bits: 1024
   m_clickCd: 0.1
@@ -469,11 +469,83 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
       propertyPath: FoodImages.Array.data[8].m_sprite
       value: 
       objectReference: {fileID: 21300000, guid: 74c73b788bccb48c5b18f904091b0626, type: 3}
     - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
       propertyPath: FoodImages.Array.data[8].m_foodType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[0].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f49a0213511a4e7eae4a882eab9116d, type: 3}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[1].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 82f105e42ed6e4e5ba846ee18f9bdcf4, type: 3}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[2].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1befce7aa164647fd8b3d58b79c85dc6, type: 3}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[3].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6004ffbaeedfb44298374c237a21cbf1, type: 3}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[4].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a1a6383d723304a09b1610f669baa253, type: 3}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[5].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 48f7a4c6c857f4c3da7dfb3e85b66e63, type: 3}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[6].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: adbd6b6d02ed54f02bfd0485a39d2ea8, type: 3}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[7].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc613b3129ae6483bba2736f8bd05473, type: 3}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[8].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 74c73b788bccb48c5b18f904091b0626, type: 3}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[1].m_foodType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[2].m_foodType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[3].m_foodType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[4].m_foodType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[5].m_foodType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[6].m_foodType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[7].m_foodType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662978032944101180, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[8].m_foodType
       value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []

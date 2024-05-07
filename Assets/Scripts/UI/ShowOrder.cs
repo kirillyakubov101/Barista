@@ -12,30 +12,30 @@ namespace Barista.UI
         [SerializeField] private Image[] m_imageSlots;
 
 
-        private void ShowClientOrder()
-        {
-            m_container.SetActive(true);
+        //private void ShowClientOrder()
+        //{
+        //    m_container.SetActive(true);
 
-            foreach(var slot in m_orderSlots) { slot.SetActive(false); }
+        //    foreach(var slot in m_orderSlots) { slot.SetActive(false); }
 
-            var CurrentRecipe = MenuFactory.Instance.CurrentRecipe;
-            var AllImages = MenuFactory.Instance.FoodImages;
+        //    var CurrentRecipe = MenuFactory.Instance.CurrentRecipe;
+        //    var AllImages = MenuFactory.Instance.FoodImages;
 
-            int index = 0;
+        //    int index = 0;
 
-            foreach (var ele in CurrentRecipe)
-            {
-                int amount = ele.Value;
-                while (amount > 0)
-                {
-                    m_orderSlots[index].SetActive(true);
-                    m_imageSlots[index++].sprite = GetSpriteFromRecipe(ele.Key, AllImages);
-                    amount--;
-                }
-            }
-        }
+        //    foreach (var ele in CurrentRecipe)
+        //    {
+        //        int amount = ele.Value;
+        //        while (amount > 0)
+        //        {
+        //            m_orderSlots[index].SetActive(true);
+        //            m_imageSlots[index++].sprite = GetSpriteFromRecipe(ele.Key, AllImages);
+        //            amount--;
+        //        }
+        //    }
+        //}
 
-        private Sprite GetSpriteFromRecipe(FoodType food, FoodImage[] foods)
+        private Sprite GetSpriteFromRecipe(FoodType food, FoodVisual[] foods)
         {
             foreach(var ele in foods)
             {

@@ -1,7 +1,5 @@
-using Barista.Food;
 using Barista.Menu;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Barista
 {
@@ -40,7 +38,7 @@ namespace Barista
                 UI_Item_Data newInst = Instantiate(m_UI_Element_Prefab, m_Transform);
 
                 int amount = item.Value;
-                Sprite sprite = GetSpriteFromRecipe(item.Key, MenuFactory.Instance.FoodImages);
+                Sprite sprite = MenuFactory.Instance.GetSpriteFromRecipe(item.Key);
 
                 newInst.InitUI_Item_Data(amount, sprite); 
 
@@ -49,15 +47,7 @@ namespace Barista
             }
         }
 
-        private Sprite GetSpriteFromRecipe(FoodType food, FoodImage[] foods)
-        {
-            foreach (var ele in foods)
-            {
-                if (ele.m_foodType == food) { return ele.m_sprite; }
-            }
-
-            return null;
-        }
+       
 
     }
 }

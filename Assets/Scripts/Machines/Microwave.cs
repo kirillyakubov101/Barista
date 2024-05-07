@@ -21,6 +21,8 @@ namespace Barista.Machines
 
         private bool m_canMicro = true;
 
+        public bool CanMicro { get => m_canMicro; }
+
         public void AddFoodToMicro()
         {
             if (!m_canMicro) { return; }

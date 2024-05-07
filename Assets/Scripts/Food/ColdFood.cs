@@ -7,6 +7,11 @@ namespace Barista.Food
     {
         public override void DoAction()
         {
+            if (!Microwave.Instance.CanMicro)
+            {
+                base.Deselect();
+                return;
+            }
             base.m_state = ItemState.REFILL;
             m_graphics.SetActive(false);
             m_placeHolder.SetActive(true);
