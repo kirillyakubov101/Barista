@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5168598478528082041}
   - component: {fileID: 4984762740223638223}
-  - component: {fileID: 1640171444078413806}
   - component: {fileID: 8485888011498290002}
+  - component: {fileID: 8123068956037326016}
   m_Layer: 10
   m_Name: FrenchToasEgg
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 2178907962246970996}
   - {fileID: 6639861390440398218}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4984762740223638223
 MonoBehaviour:
@@ -55,19 +55,6 @@ MonoBehaviour:
   m_placeHolder: {fileID: 8332998725143879526}
   m_RefilTime: 3
   m_progressMeter: {fileID: 3161117604772466749}
---- !u!135 &1640171444078413806
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5168598478528310361}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.14
-  m_Center: {x: 0, y: 0.04, z: 0}
 --- !u!114 &8485888011498290002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +74,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &8123068956037326016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5168598478528310361}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37, y: 0.07, z: 0.43}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &5168598478528310363
 GameObject:
   m_ObjectHideFlags: 0

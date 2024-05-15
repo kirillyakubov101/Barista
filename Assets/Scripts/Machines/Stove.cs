@@ -1,7 +1,6 @@
 using UnityEngine;
 using MyUtils;
 using System.Collections;
-using System;
 
 namespace Barista.Machines
 {
@@ -14,17 +13,22 @@ namespace Barista.Machines
 
         private bool m_canHeat = true;
 
-        readonly int hashIndex1 = Animator.StringToHash("Cook");
+        readonly int hashIndex = Animator.StringToHash("Cook");
+
+        public bool CanHeat { get => m_canHeat;}
 
         public void AddFoodToStove()
         {
-            if (!m_canHeat) { return; }
             m_canHeat = false;
-
-            m_animator.Play(hashIndex1);
+            m_animator.Play(hashIndex);
             m_dummyFood.SetActive(true);
 
             StartCoroutine(ProcessCooking());
+        }
+
+        public void EnableStove()
+        {
+            m_canHeat = true;
         }
 
         private IEnumerator ProcessCooking()
@@ -38,7 +42,6 @@ namespace Barista.Machines
         {
             m_preparedFood.SetActive(true);
             m_dummyFood.SetActive(false);
-            m_canHeat = true;
         }
     }
 }
