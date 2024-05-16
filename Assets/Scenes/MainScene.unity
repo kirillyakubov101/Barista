@@ -986,24 +986,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 2074435652}
     m_Modifications:
     - target: {fileID: 160125248, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
-      propertyPath: testSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cc613b3129ae6483bba2736f8bd05473, type: 3}
-    - target: {fileID: 160125248, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
-      propertyPath: m_Transform
-      value: 
-      objectReference: {fileID: 160125249}
-    - target: {fileID: 160125248, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
-      propertyPath: m_UI_Element_Prefab
-      value: 
-      objectReference: {fileID: 616848820268317722, guid: b93787083a148c34bbcb84f85a73b3fb, type: 3}
+      propertyPath: m_showUI_Item_Delay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1551388825522960994, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
       propertyPath: m_Name
       value: UserInterface
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666624496411776331, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
-      propertyPath: m_Name
-      value: Parent
       objectReference: {fileID: 0}
     - target: {fileID: 8265936368288804575, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
       propertyPath: m_RootOrder
@@ -1055,11 +1043,6 @@ PrefabInstance:
 --- !u!4 &160125242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8265936368288804575, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
-  m_PrefabInstance: {fileID: 160125241}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &160125249 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8415250122808398850, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
   m_PrefabInstance: {fileID: 160125241}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &162232848 stripped
@@ -30699,6 +30682,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1220510082777838595, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: m_FoodVisuals.Array.data[7].m_sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc613b3129ae6483bba2736f8bd05473, type: 3}
     - target: {fileID: 6917564259402080440, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
       propertyPath: m_Name
       value: Player

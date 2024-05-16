@@ -1,4 +1,5 @@
 using Barista.Menu;
+using System.Collections;
 using UnityEngine;
 
 namespace Barista
@@ -7,6 +8,8 @@ namespace Barista
     {
         [SerializeField] private UI_Item_Data m_UI_Element_Prefab;
         [SerializeField] private RectTransform m_Transform;
+        [SerializeField] private float m_showUI_Item_Delay = 0.75f;
+        
 
         [SerializeField] private float m_offsetY = 100f;
 
@@ -24,6 +27,11 @@ namespace Barista
 
         public void DisplayOrder()
         {
+            StartCoroutine(nameof(DisplayOrderProcess));
+        }
+
+        private IEnumerator DisplayOrderProcess()
+        {
             foreach (Transform child in m_Transform)
             {
                 // Destroy the child GameObject
@@ -33,17 +41,19 @@ namespace Barista
             m_startingOffset = 0f;
 
             var Recipe = MenuFactory.Instance.CurrentRecipe;
-            foreach(var item in Recipe)
+            foreach (var item in Recipe)
             {
                 UI_Item_Data newInst = Instantiate(m_UI_Element_Prefab, m_Transform);
 
                 int amount = item.Value;
                 Sprite sprite = MenuFactory.Instance.GetSpriteFromRecipe(item.Key);
 
-                newInst.InitUI_Item_Data(amount, sprite); 
+                newInst.InitUI_Item_Data(amount, sprite);
+                newInst.DisplayItem(m_startingOffset);
 
-                newInst.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, m_startingOffset);
                 m_startingOffset -= m_offsetY;
+
+                yield return new WaitForSeconds(m_showUI_Item_Delay);
             }
         }
 
