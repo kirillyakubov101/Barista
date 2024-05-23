@@ -985,10 +985,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 2074435652}
     m_Modifications:
-    - target: {fileID: 160125248, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
-      propertyPath: m_showUI_Item_Delay
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1551388825522960994, guid: c9a9cfa0743e0b64ab72632e3af09ccb, type: 3}
       propertyPath: m_Name
       value: UserInterface

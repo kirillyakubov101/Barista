@@ -4,6 +4,7 @@ using Barista.Factory;
 using System.Collections.Generic;
 using Barista.Menu;
 using MyUtils;
+using Barista.UI;
 
 namespace Barista.Core
 {
@@ -63,6 +64,8 @@ namespace Barista.Core
             }
             else
             {
+                //Test
+                ErrorSystem.Instance.DisplayError(ErrorType.WrongOrder);
                 //Wrong
                 print("no");
                 MenuFactory.Instance.GenerateNewRecipe();
