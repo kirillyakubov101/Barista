@@ -32,7 +32,8 @@ namespace Barista.Core
 
         public async void PopulateCart(FoodType food)
         {
-            if (CartFull()) { return; }
+            if (CartFull()) { ErrorSystem.Instance.DisplayError(ErrorType.CartFull); return; }
+          
 
             m_pickedFoodTypes.Add(food);
 

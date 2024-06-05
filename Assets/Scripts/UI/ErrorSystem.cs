@@ -6,7 +6,8 @@ namespace Barista.UI
 {
     public enum ErrorType
     {
-        WrongOrder
+        WrongOrder,
+        CartFull
     }
 
     public class ErrorSystem : Singleton<ErrorSystem>

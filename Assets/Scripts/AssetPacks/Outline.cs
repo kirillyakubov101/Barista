@@ -8,7 +8,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -23,6 +22,8 @@ public class Outline : MonoBehaviour {
     {
         outlineWidth = state ? displayValue : hideValue;
         UpdateMats();
+
+        UpdateMaterialProperties();
     }
 
     private void UpdateMats()
@@ -45,9 +46,14 @@ public class Outline : MonoBehaviour {
         }
     }
 
-  
+    private void Start()
+    {
+        UpdateMaterialProperties();
+    }
 
-  public enum Mode {
+
+
+    public enum Mode {
     OutlineAll,
     OutlineVisible,
     OutlineHidden,
@@ -130,56 +136,54 @@ public class Outline : MonoBehaviour {
     needsUpdate = true;
   }
 
-  void OnEnable() {
-    foreach (var renderer in renderers) {
+    void OnEnable() 
+    {
+        foreach (var renderer in renderers)
+        {
+            // Append outline shaders
+            var materials = renderer.sharedMaterials.ToList();
 
-      // Append outline shaders
-      var materials = renderer.sharedMaterials.ToList();
+            materials.Add(outlineMaskMaterial);
+            materials.Add(outlineFillMaterial);
 
-      materials.Add(outlineMaskMaterial);
-      materials.Add(outlineFillMaterial);
+            renderer.materials = materials.ToArray();
+        }
 
-      renderer.materials = materials.ToArray();
-    }
-  }
-
-  void OnValidate() {
-
-    // Update material properties
-    needsUpdate = true;
-
-    // Clear cache when baking is disabled or corrupted
-    if (!precomputeOutline && bakeKeys.Count != 0 || bakeKeys.Count != bakeValues.Count) {
-      bakeKeys.Clear();
-      bakeValues.Clear();
+      
     }
 
-    // Generate smooth normals when baking is enabled
-    if (precomputeOutline && bakeKeys.Count == 0) {
-      Bake();
-    }
-  }
+    void OnValidate() {
 
-  void Update() {
-    if (needsUpdate) {
-      needsUpdate = false;
+        // Update material properties
+        needsUpdate = true;
+        // Clear cache when baking is disabled or corrupted
+        if (!precomputeOutline && bakeKeys.Count != 0 || bakeKeys.Count != bakeValues.Count)
+        {
+            bakeKeys.Clear();
+            bakeValues.Clear();
+        }
 
-      UpdateMaterialProperties();
+        // Generate smooth normals when baking is enabled
+        if (precomputeOutline && bakeKeys.Count == 0)
+        {
+            Bake();
+        }
     }
-  }
+
 
   void OnDisable() {
-    foreach (var renderer in renderers) {
+        foreach (var renderer in renderers)
+        {
 
-      // Remove outline shaders
-      var materials = renderer.sharedMaterials.ToList();
+            // Remove outline shaders
+            var materials = renderer.sharedMaterials.ToList();
 
-      materials.Remove(outlineMaskMaterial);
-      materials.Remove(outlineFillMaterial);
+            materials.Remove(outlineMaskMaterial);
+            materials.Remove(outlineFillMaterial);
 
-      renderer.materials = materials.ToArray();
+            renderer.materials = materials.ToArray();
+        }
     }
-  }
 
   void OnDestroy() {
 

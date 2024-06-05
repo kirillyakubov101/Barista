@@ -1,6 +1,8 @@
 using UnityEngine;
 using MyUtils;
 using System.Collections;
+using Barista.Sounds;
+using Barista.Food;
 
 namespace Barista.Machines
 {
@@ -8,7 +10,7 @@ namespace Barista.Machines
     {
         [SerializeField] private Animator m_animator;
         [SerializeField] private float m_prepareTime = 3f;
-        [SerializeField] private GameObject m_preparedFood;
+        [SerializeField] private PreparedFood m_preparedFood;
         [SerializeField] private GameObject m_dummyFood;
 
         private bool m_canHeat = true;
@@ -22,6 +24,8 @@ namespace Barista.Machines
             m_canHeat = false;
             m_animator.Play(hashIndex);
             m_dummyFood.SetActive(true);
+
+            SoundHandler.Instance.PlayStoveSound(true);
 
             StartCoroutine(ProcessCooking());
         }
@@ -40,8 +44,10 @@ namespace Barista.Machines
 
         private void StoveDone()
         {
-            m_preparedFood.SetActive(true);
+            m_preparedFood.ShowPreparedFood();
             m_dummyFood.SetActive(false);
+
+            SoundHandler.Instance.PlayStoveSound(false);
         }
     }
 }
