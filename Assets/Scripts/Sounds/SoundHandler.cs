@@ -9,8 +9,8 @@ namespace Barista.Sounds
         [SerializeField] private AudioSource m_StoveAudioSource;
         [Header("Coffee Machine")]
         [SerializeField] private AudioSource m_CoffeeMachineAudioSource;
-        [Header("Shaker")]
-        [SerializeField] private AudioSource m_ShakerAudioSource;
+        [Header("Shakers")]
+        [SerializeField] private AudioSource[] m_ShakersAudioSource;
         [Header("Error")]
         [SerializeField] private AudioSource m_ErrorAudioSource;
 
@@ -43,11 +43,22 @@ namespace Barista.Sounds
         {
             if (state)
             {
-                m_ShakerAudioSource.Play();
+                foreach (var ele in m_ShakersAudioSource)
+                {
+                    if (!ele.isPlaying)
+                    {
+                        ele.Play();
+                        break;
+                    }
+                }
             }
+
             else
             {
-                m_ShakerAudioSource.Stop();
+                foreach (var ele in m_ShakersAudioSource)
+                {
+                    if (ele.isPlaying) { ele.Stop(); break; }
+                }
             }
         }
 
