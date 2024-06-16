@@ -22,6 +22,7 @@ namespace Barista.UI
         {
             m_errorTextContainr.text = errorType.ToString();
             m_errorAnimator.Play(hashIndex);
+            Sounds.SoundHandler.Instance.PlayErrorSound(true);
         }
 
     }

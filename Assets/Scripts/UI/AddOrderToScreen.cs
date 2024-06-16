@@ -1,5 +1,6 @@
 using Barista.Menu;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Barista
@@ -14,6 +15,7 @@ namespace Barista
         [SerializeField] private float m_offsetY = 100f;
 
         private float m_startingOffset = 0f;
+        private Coroutine m_current;
 
         private void OnEnable()
         {
@@ -27,7 +29,8 @@ namespace Barista
 
         public void DisplayOrder()
         {
-            StartCoroutine(nameof(DisplayOrderProcess));
+            if(m_current != null) { StopCoroutine(m_current); }
+            m_current = StartCoroutine(nameof(DisplayOrderProcess));
         }
 
         private IEnumerator DisplayOrderProcess()
@@ -40,7 +43,8 @@ namespace Barista
 
             m_startingOffset = 0f;
 
-            var Recipe = MenuFactory.Instance.CurrentRecipe;
+            var Recipe = new Dictionary<Food.FoodType,int>(MenuFactory.Instance.CurrentRecipe);
+
             foreach (var item in Recipe)
             {
                 UI_Item_Data newInst = Instantiate(m_UI_Element_Prefab, m_Transform);
@@ -56,6 +60,8 @@ namespace Barista
                 yield return new WaitForSeconds(m_showUI_Item_Delay);
             }
         }
+
+
 
        
 

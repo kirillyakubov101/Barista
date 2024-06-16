@@ -1,3 +1,4 @@
+using Barista.Sounds;
 using UnityEngine;
 
 namespace Barista.Machines
@@ -13,6 +14,7 @@ namespace Barista.Machines
         public override void MakeBeverage()
         {
             if (IsStandEmpty()) { return; }
+            SoundHandler.Instance.PlayShakerPourSound(true);
             base.MakeBeverage();
             m_glassVisual.SetActive(true);
             base.m_animator.Play(animHashInt);
@@ -26,6 +28,7 @@ namespace Barista.Machines
             m_collder.enabled = true;
             m_glassVisual.SetActive(false);
             m_beveragePrefab.SetActive(true);
+            SoundHandler.Instance.PlayShakerPourSound(false);
         }
     }
 }

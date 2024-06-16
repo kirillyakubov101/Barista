@@ -1,3 +1,4 @@
+using Barista.Sounds;
 using System.Collections;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace Barista.Machines
         public override void MakeBeverage()
         {
             if (IsStandEmpty()) { return; }
+            SoundHandler.Instance.PlayCoffeeMachine(true);
             m_CoffeeProcessModels.SetActive(true);
             base.MakeBeverage();
             base.m_animator.Play(animHashInt);
@@ -41,6 +43,7 @@ namespace Barista.Machines
             m_animator.enabled = false;
             m_CoffeeProcessModels.SetActive(false);
             m_beveragePrefab.SetActive(true);
+            SoundHandler.Instance.PlayCoffeeMachine(false);
         }
     }
 }
