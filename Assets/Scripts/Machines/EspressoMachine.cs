@@ -26,6 +26,12 @@ namespace Barista.Machines
             StartCoroutine(CoffeeMakingProcess());
         }
 
+        protected override bool IsStandEmpty()
+        {
+            return m_CoffeeProcessModels.activeSelf || base.IsStandEmpty();
+        }
+      
+
         private IEnumerator CoffeeMakingProcess()
         {
             float timer = 0f;

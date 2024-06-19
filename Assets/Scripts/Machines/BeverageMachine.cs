@@ -14,7 +14,7 @@ namespace Barista.Machines
             m_animator.enabled = true;
         }
 
-        protected bool IsStandEmpty()
+        protected virtual bool IsStandEmpty()
         {
             return m_beveragePrefab.activeSelf;
         }

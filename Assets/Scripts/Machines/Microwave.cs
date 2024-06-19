@@ -64,6 +64,11 @@ namespace Barista.Machines
             SoundHandler.Instance.PlayMicrowaveDoorClose(true);
         }
 
+        private void PlayOpenSound()
+        {
+            SoundHandler.Instance.PlayMicrowaveDoorOpen(true);
+            SoundHandler.Instance.PlayeMicroDoneBeep(true);
+        }
 
     }
 }
