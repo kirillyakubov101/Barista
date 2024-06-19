@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Barista.Menu;
 using MyUtils;
 using Barista.UI;
+using Barista.Sounds;
 
 namespace Barista.Core
 {
@@ -62,6 +63,7 @@ namespace Barista.Core
                 //Correct
                 print("yes");
                 MenuFactory.Instance.GenerateNewRecipe();
+                SoundHandler.Instance.PlayCorrectSound(true);
             }
             else
             {

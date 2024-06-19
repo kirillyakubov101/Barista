@@ -1,6 +1,7 @@
 using UnityEngine;
 using MyUtils;
 using System.Collections;
+using Barista.Sounds;
 
 namespace Barista.Machines
 {
@@ -26,6 +27,7 @@ namespace Barista.Machines
         public void AddFoodToMicro()
         {
             if (!m_canMicro) { return; }
+            SoundHandler.Instance.PlayMicrowaveDoorOpen(true);
             m_preparationScreen.GetComponent<MeshRenderer>().material = m_preparationScreenMat;
             m_canMicro = false;
             m_animator.Play(hashIndex1);
@@ -53,6 +55,13 @@ namespace Barista.Machines
         {
             m_animator.Play(hashIndex3);
             m_canMicro = true;
+            PlayCloseSound();
+        }
+
+        //Animation events
+        private void PlayCloseSound()
+        {
+            SoundHandler.Instance.PlayMicrowaveDoorClose(true);
         }
 
 
