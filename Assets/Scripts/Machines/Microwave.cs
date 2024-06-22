@@ -39,7 +39,6 @@ namespace Barista.Machines
         private IEnumerator ProcessFoodPrep()
         {
             yield return new WaitForSeconds(m_prepareTime);
-
             MicroDone();
         }
 
