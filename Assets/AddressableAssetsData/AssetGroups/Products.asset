@@ -62,6 +62,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d0fa479b4ce5644792e0d083b1e5ba7
+    m_Address: Assets/Prefab/FoodMenu_Adressables/Capcake.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a29a0c6bdc863d2448eb89fc6e9f40cd, type: 2}
   m_SchemaSet:

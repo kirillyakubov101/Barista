@@ -11,7 +11,8 @@ namespace Barista.Food
         OrangeJuice,
         Lemonade,
         Croissant,
-        Toast
+        Toast,
+        Capcake
     } 
 
 }
