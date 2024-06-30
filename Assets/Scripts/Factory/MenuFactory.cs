@@ -4,6 +4,7 @@ using Barista.Food;
 using System;
 using Random = UnityEngine.Random;
 using UnityEngine;
+using Barista.Order;
 
 namespace Barista.Menu
 {
@@ -17,7 +18,6 @@ namespace Barista.Menu
 
     public class MenuFactory : Singleton<MenuFactory>
     {
-        public static event Action OnRecipeGenerated;
 
         [SerializeField] private List<FoodVisual> m_FoodVisuals;
 
@@ -32,6 +32,7 @@ namespace Barista.Menu
            
             m_CurrentRecipe.Clear();
             int amountOfItems = Random.Range(1, 4);
+            
            
 
             for (int i = 0; i < amountOfItems; i++)
@@ -48,8 +49,7 @@ namespace Barista.Menu
                 }
                 
             }
-            PrintRecipe(); //Debug show recipe log
-            OnRecipeGenerated?.Invoke();
+            PrintRecipe();
         }
 
         public void RemoveItemsFromRecipe(FoodType key)

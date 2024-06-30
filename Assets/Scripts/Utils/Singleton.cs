@@ -14,29 +14,35 @@ namespace MyUtils
                 {
                     var foundInstances = FindObjectsOfType<T>();
 
-                    if (foundInstances.Length == 0)
-                    {
-                        GameObject singletonObject = new GameObject(typeof(T).Name);
-                        instance = singletonObject.AddComponent<T>();
-                    }
-                    else
-                    {
-                        instance = foundInstances[0];
+                    //if (foundInstances.Length == 0)
+                    //{
+                    //    GameObject singletonObject = new GameObject(typeof(T).Name);
+                    //    instance = singletonObject.AddComponent<T>();
+                    //}
+                    if (foundInstances.Length == 0) { print("singleton was not found!"); return null; }
 
-                        for (int i = 1; i < foundInstances.Length; i++)
-                        {
-                            Destroy(foundInstances[i]);
-                        }
+                    instance = foundInstances[0];
+
+                    for (int i = 1; i < foundInstances.Length; i++)
+                    {
+                        Destroy(foundInstances[i]);
                     }
                 }
                 return instance;
             }
         }
 
-        private void OnApplicationQuit()
+        protected virtual void OnApplicationQuit()
         {
             instance = null;
-            Destroy(gameObject);
+        }
+
+        protected virtual void OnDestroy()
+        {
+            if (instance == this)
+            {
+                instance = null;
+            }
         }
 
     }

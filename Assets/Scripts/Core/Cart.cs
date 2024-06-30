@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Barista.Menu;
 using MyUtils;
 using Barista.UI;
-using Barista.Sounds;
+using Barista.Order;
 
 namespace Barista.Core
 {
@@ -15,20 +15,9 @@ namespace Barista.Core
         [SerializeField] private Transform[] m_placements = new Transform[3];
         [SerializeField] private List<FoodType> m_pickedFoodTypes = new List<FoodType>();
 
+        private int m_currentPlacementIndex = 0;
+        private int m_foodItemsInCart = 0;
 
-        private int m_currentIndex = 0;
-        private int m_count = 0;
-
-        private bool CartFull()
-        {
-            return m_count >= 3;
-        }
-
-        //TODO: DELETE TEST
-        private void Start()
-        {
-            MenuFactory.Instance.GenerateNewRecipe();
-        }
 
 
         public async void PopulateCart(FoodType food)
@@ -40,73 +29,47 @@ namespace Barista.Core
 
             //load the picked object GRAPHICS and put it in the cart
             GameObject inst = await ProductFactory.Instance.LoadFood(food);
-            m_pickedItems[m_currentIndex] = inst;
-            inst.transform.parent = m_placements[m_currentIndex].transform;
-            inst.transform.position = m_placements[m_currentIndex].transform.position;
+            m_pickedItems[m_currentPlacementIndex] = inst;
+            inst.transform.parent = m_placements[m_currentPlacementIndex].transform;
+            inst.transform.position = m_placements[m_currentPlacementIndex].transform.position;
 
-            m_count++;
-            m_currentIndex++;
+            m_foodItemsInCart++;
+            m_currentPlacementIndex++;
 
-            if(m_currentIndex == m_pickedItems.Length)
+            if(m_currentPlacementIndex == m_pickedItems.Length)
             {
-                m_currentIndex = m_pickedItems.Length - 1;
+                m_currentPlacementIndex = m_pickedItems.Length - 1;
             }
         }
 
         public void SubmitCartOrder()
         {
-            if(m_count == 0) { return; }
+            if(m_foodItemsInCart == 0 || MenuFactory.Instance.CurrentRecipe.Count == 0) { return; }
 
-            //check if the order is correctly done
-            if (IsCorrectRecipe())
-            {
-                //Correct
-                print("yes");
-                MenuFactory.Instance.GenerateNewRecipe();
-                SoundHandler.Instance.PlayCorrectSound(true);
-            }
-            else
-            {
-                //Test
-                ErrorSystem.Instance.DisplayError(ErrorType.WrongOrder);
-                //Wrong
-                print("no");
-                MenuFactory.Instance.GenerateNewRecipe();
-            }
+            OrderHandler.Instance.SubmitOrderToClient(m_pickedFoodTypes);
 
+            ClearTheCart();
+        }
+
+        private bool CartFull()
+        {
+            return m_foodItemsInCart >= 3;
+        }
+
+        private void ClearTheCart()
+        {
             //clear the cart
             foreach (var ele in m_pickedItems)
             {
-                if(ele == null) { continue; }
+                if (ele == null) { continue; }
                 ProductFactory.Instance.Release(ele);
             }
 
             //clear the cart from the food types
             m_pickedFoodTypes.Clear();
 
-            m_count = 0;
-            m_currentIndex = 0;
-        }
-
-        public bool IsCorrectRecipe()
-        {
-            var recipe = MenuFactory.Instance.CurrentRecipe;
-
-            for (int i = 0; i < m_pickedFoodTypes.Count; i++)
-            {
-                FoodType key = m_pickedFoodTypes[i];
-                if (recipe.ContainsKey(key))
-                {
-                    MenuFactory.Instance.RemoveItemsFromRecipe(key); 
-                }
-                else
-                {
-                    //no key like that (too many of these item on the cart)
-                    return false;
-                }
-            }
-           
-            return recipe.Count == 0;
+            m_foodItemsInCart = 0;
+            m_currentPlacementIndex = 0;
         }
     }
 }

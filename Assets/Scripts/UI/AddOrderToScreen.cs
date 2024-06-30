@@ -1,4 +1,5 @@
 using Barista.Menu;
+using Barista.Order;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,29 +18,27 @@ namespace Barista
         private float m_startingOffset = 0f;
         private Coroutine m_current;
 
-        private void OnEnable()
-        {
-            MenuFactory.OnRecipeGenerated += DisplayOrder;
-        }
-
-        private void OnDestroy()
-        {
-            MenuFactory.OnRecipeGenerated -= DisplayOrder;
-        }
-
         public void DisplayOrder()
         {
             if(m_current != null) { StopCoroutine(m_current); }
             m_current = StartCoroutine(nameof(DisplayOrderProcess));
         }
 
-        private IEnumerator DisplayOrderProcess()
+        public void ClearOrderScreen(bool status = true)
         {
             foreach (Transform child in m_Transform)
             {
                 // Destroy the child GameObject
                 Destroy(child.gameObject);
             }
+
+            m_startingOffset = 0f;
+        }
+
+
+        private IEnumerator DisplayOrderProcess()
+        {
+            ClearOrderScreen();
 
             m_startingOffset = 0f;
 
