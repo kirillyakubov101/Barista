@@ -18,7 +18,20 @@ namespace Barista
         private float m_startingOffset = 0f;
         private Coroutine m_current;
 
-        public void DisplayOrder()
+        private void OnEnable()
+        {
+            OrderHandler.Instance.OnOrderGenerated += DisplayOrder;
+            OrderHandler.Instance.OnOrderComplete += ClearOrderScreen;
+        }
+
+        private void OnDisable()
+        {
+            if (OrderHandler.Instance == null) { return; }
+            OrderHandler.Instance.OnOrderGenerated -= DisplayOrder;
+            OrderHandler.Instance.OnOrderComplete -= ClearOrderScreen;
+        }
+
+        private void DisplayOrder()
         {
             if(m_current != null) { StopCoroutine(m_current); }
             m_current = StartCoroutine(nameof(DisplayOrderProcess));

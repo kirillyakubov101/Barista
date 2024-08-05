@@ -25,6 +25,18 @@ namespace Barista.Menu
         private Dictionary<FoodType, Sprite> m_FoodToVisualDictionary = new Dictionary<FoodType, Sprite>();
         public IReadOnlyDictionary<FoodType, int> CurrentRecipe { get => m_CurrentRecipe;  }
 
+        private void OnEnable()
+        {
+            OrderHandler.Instance.OnOrderGenerated += GenerateNewRecipe;
+            OrderHandler.Instance.OnOrderComplete += ClearRecipe;
+        }
+
+        private void OnDisable()
+        {
+            if(OrderHandler.Instance == null) { return; }
+            OrderHandler.Instance.OnOrderGenerated -= GenerateNewRecipe;
+            OrderHandler.Instance.OnOrderComplete -= ClearRecipe;
+        }
 
 
         public void GenerateNewRecipe()
@@ -49,7 +61,7 @@ namespace Barista.Menu
                 }
                 
             }
-            PrintRecipe();
+            //PrintRecipe();
         }
 
         public void RemoveItemsFromRecipe(FoodType key)
@@ -90,6 +102,11 @@ namespace Barista.Menu
             {
                 m_FoodToVisualDictionary.Add(foodVisual.m_foodType, foodVisual.m_sprite);
             }
+        }
+
+        private void ClearRecipe(bool status)
+        {
+            m_CurrentRecipe.Clear();
         }
     }
 }

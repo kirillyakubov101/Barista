@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace MyUtils
 {
@@ -19,7 +20,8 @@ namespace MyUtils
                     //    GameObject singletonObject = new GameObject(typeof(T).Name);
                     //    instance = singletonObject.AddComponent<T>();
                     //}
-                    if (foundInstances.Length == 0) { print("singleton was not found!"); return null; }
+                    if (foundInstances.Length == 0) { return null; }
+                    
 
                     instance = foundInstances[0];
 

@@ -16,12 +16,22 @@ namespace Barista.Clients
         [SerializeField] private ClientPawn m_clientPrefab;
         [SerializeField] private LayerMask m_ClientLayerMask;
 
-        private LinkedList<ClientPawn> m_ListOfClients = new LinkedList<ClientPawn>(); //Linked List of Clients
+        public List<ClientPawn> TestListOfClients = new List<ClientPawn>();
 
-        private const int c_MAX_Clients = 1;
-        private int m_currentLinePositionIndex = 0; //TODO: adjust this when new clients spawn after intial group
+        private LinkedList<ClientPawn> m_ListOfClients = new LinkedList<ClientPawn>(); //Linked List of Clients
+        public int m_currentLinePositionIndex = 0;
         private Transform m_CounterTransform;
-        private WaitForSeconds m_sleepTime = new WaitForSeconds(2f);
+        private float m_sleepTime = 2f;
+        private CientFlowTaskSystem m_cientFlowTaskSystem;
+        private AnimGraph m_ClientsArrivalGraph;
+        public int m_currentAmountOfClients = 0;
+        private float m_timer = 0f;
+
+        private void Awake()
+        {
+            m_cientFlowTaskSystem = GetComponent<CientFlowTaskSystem>();
+            m_ClientsArrivalGraph = GetComponent<AnimGraph>();
+        }
 
         private void Start()
         {
@@ -29,22 +39,41 @@ namespace Barista.Clients
             {
                 m_CounterTransform = m_LinePositions[0];
             }
-           
-            StartCoroutine(BeginClientWorkFlow());
+        }
+
+        private void Update()
+        {
+            if(m_timer >= m_sleepTime)
+            {
+                m_timer = 0f;
+
+                if(m_ClientsArrivalGraph.GetCurrentMaxClients() > m_currentAmountOfClients)
+                {
+                    SpawnClient();
+                }
+            }
+
+            m_timer += Time.deltaTime;
+
+
         }
 
         public void ProcessClientLeft()
         {
-            if(m_ListOfClients.Count == 0) { return; }
+            if(m_currentAmountOfClients == 0) { return; }
+
+            TestListOfClients.Remove(m_ListOfClients.First.Value); //test
+            m_ListOfClients.RemoveFirst();
 
             m_currentLinePositionIndex--;
-
-            m_ListOfClients.RemoveFirst();
+            m_currentAmountOfClients--;
 
             if (m_ListOfClients.Count > 0)
             {
-                StartCoroutine(UpdateLineProcess());
+                m_cientFlowTaskSystem.AddNewTask(UpdateLineProcess());
             }
+
+
         }
 
         private IEnumerator UpdateLineProcess()
@@ -54,49 +83,43 @@ namespace Barista.Clients
 
             while (CurrentNode != null)
             {
-               
-                Transform temp = CurrentNode.Value.GetGoalTransform();
-                CurrentNode.Value.SetGoalTransform(CurrentGoalTransform);
-                CurrentGoalTransform = temp;
-                CurrentNode.Value.AdvanceTheLine();
-                CurrentNode = CurrentNode.Next;
+                Transform PreviousTransform = CurrentNode.Value.m_TargetTransform;
+                CurrentNode.Value.AdvanceTheLine(CurrentGoalTransform);
+                CurrentNode.Value.m_TargetTransform = CurrentGoalTransform;
+                CurrentGoalTransform = PreviousTransform;
 
+
+                CurrentNode = CurrentNode.Next;
                 yield return new WaitForSeconds(1f);
             }
-
-            yield return null;
         }
 
-
-        private IEnumerator BeginClientWorkFlow()
-        {
-            while (m_ListOfClients.Count < c_MAX_Clients)
-            {
-                if (IsRestaurantFull()) { break; }
-                SpawnClient();
-
-                yield return m_sleepTime;
-            }
-        }
-
-        private bool IsRestaurantFull()
-        {
-            return m_ListOfClients.Count >= c_MAX_Clients;
-        }
+     
 
         private void SpawnClient()
         {
-            
-            bool canSpawn = !IsSpawnPlaceOccupied(out Transform SpawnPoint);
 
-            if(canSpawn)
-            {
-                var newClient = Instantiate<ClientPawn>(m_clientPrefab, SpawnPoint.position, SpawnPoint.rotation);
-                newClient.name = m_currentLinePositionIndex.ToString();
-                m_ListOfClients.AddLast(newClient);
+            //bool canSpawn = !IsSpawnPlaceOccupied(out Transform SpawnPoint);
 
-                newClient.InitSpawnedClient(m_LinePositions[m_currentLinePositionIndex++], m_PlayerApproxTransform, SpawnPoint);
-            }
+            //if(canSpawn)
+            //{
+            //    var newClient = Instantiate<ClientPawn>(m_clientPrefab, SpawnPoint.position, SpawnPoint.rotation);
+            //    m_ListOfClients.AddLast(newClient);
+
+            //    newClient.InitSpawnedClient(m_LinePositions[m_currentLinePositionIndex], m_PlayerApproxTransform, SpawnPoint);
+            //    m_currentAmountOfClients++;
+            //    m_currentLinePositionIndex++;
+            //    TestListOfClients.Add(newClient); //test
+            //}
+
+
+            var newClient = Instantiate<ClientPawn>(m_clientPrefab, m_clientSpawnPoints[0].position, m_clientSpawnPoints[0].rotation);
+            m_ListOfClients.AddLast(newClient);
+
+            newClient.InitSpawnedClient(m_LinePositions[m_currentLinePositionIndex], m_PlayerApproxTransform, m_clientSpawnPoints[0]);
+            m_currentAmountOfClients++;
+            m_currentLinePositionIndex++;
+            TestListOfClients.Add(newClient); //test
 
         }
 

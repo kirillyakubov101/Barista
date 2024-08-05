@@ -1,3 +1,4 @@
+using Barista.Clients;
 using Barista.Food;
 using Barista.Menu;
 using Barista.Sounds;
@@ -13,33 +14,34 @@ namespace Barista.Order
         public event Action OnOrderGenerated;
         public event Action<bool> OnOrderComplete;
 
+        public ClientPawn m_currentClient = null;
+
         public void SubmitOrderToClient(List<FoodType> PickedFoodTypes)
         {
             if(IsCorrectRecipe(PickedFoodTypes))
             {
                 SoundHandler.Instance.PlayCorrectSound(true);
                 OnOrderComplete?.Invoke(true);
+                m_currentClient.RecieveOrder(true);
             }
             else
             {
                 ErrorSystem.Instance.DisplayError(ErrorType.WrongOrder);
                 OnOrderComplete?.Invoke(false);
+                m_currentClient.RecieveOrder(false);
             }
+
+            m_currentClient = null;
         }
 
-        public void TakeOrderFromClient()
+        //Client ordered food
+        public void TakeOrderFromClient(ClientPawn client)
         {
+            m_currentClient = client;
             OnOrderGenerated?.Invoke();
         }
 
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            OnOrderGenerated = null;
-            OnOrderComplete = null;
-
-        }
-
+     
         public bool IsCorrectRecipe(List<FoodType> PickedFoodTypes)
         {
             var recipe = MenuFactory.Instance.CurrentRecipe;
@@ -60,5 +62,15 @@ namespace Barista.Order
 
             return recipe.Count == 0;
         }
+
+        //Override the singleton destroy
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            OnOrderGenerated = null;
+            OnOrderComplete = null;
+
+        }
+
     }
 }
