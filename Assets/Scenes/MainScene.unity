@@ -8420,6 +8420,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1954185702199389827, guid: e0f2df96b7a2b1b4eb0445c0a3be5515, type: 3}
   m_PrefabInstance: {fileID: 1096974171}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1144429856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1144429858}
+  - component: {fileID: 1144429857}
+  m_Layer: 0
+  m_Name: TestRemove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1144429857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144429856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d584a683f25e34394cb107cc092bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1144429858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144429856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8543897, y: 0.445441, z: -1.7132777}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1152880317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8061035168507510973, guid: b96da0c0b7583164889302d9a1366807, type: 3}
@@ -14780,6 +14824,9 @@ MonoBehaviour:
   m_ClientLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+  TestListOfClients: []
+  m_currentLinePositionIndex: 0
+  m_currentAmountOfClients: 0
 --- !u!114 &1970053924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14792,6 +14839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836f5acd268f2364bac3c5387fece32c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_currentClient: {fileID: 0}
 --- !u!114 &1970053925
 MonoBehaviour:
   m_ObjectHideFlags: 0
