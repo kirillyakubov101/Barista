@@ -1,5 +1,6 @@
 using UnityEngine;
 using Barista.MyCamera;
+using Barista.Sounds;
 
 namespace Barista.Core
 {
@@ -35,6 +36,7 @@ namespace Barista.Core
             if (Input.GetMouseButtonDown(0))
             {
                 m_isClicked = true;
+
             }
         }
 
@@ -58,6 +60,7 @@ namespace Barista.Core
         {
             if (m_isClicked && m_Timer >= m_clickCd)
             {
+                SoundHandler.Instance.PlayEmptyClick(false);
                 RayCastFromMouse(out m_hasHit, out m_Hitinfo);
                 if (m_hasHit)
                 {
@@ -80,6 +83,8 @@ namespace Barista.Core
                 else
                 {
                     if (m_selected != null) { m_selected.Deselect(); m_selected = null; }
+
+                    SoundHandler.Instance.PlayEmptyClick(true);
                 }
             }
         }
