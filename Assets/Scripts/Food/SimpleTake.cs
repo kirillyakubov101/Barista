@@ -1,4 +1,5 @@
 using Barista.Core;
+using System.Collections;
 using UnityEngine;
 
 namespace Barista.Food
@@ -11,9 +12,11 @@ namespace Barista.Food
         [SerializeField] protected ProgressMeter m_progressMeter;
 
         protected bool isRefilling = false;
+        private float m_foodRefilSpeed = 2f;
 
         public void Select()
         {
+            if (isRefilling) { return; }
             base.m_state = ItemState.SELECTED;
             m_outline.DisplayOutline(true);
         }
@@ -41,23 +44,46 @@ namespace Barista.Food
             return m_state;
         }
 
-        public virtual async void Refil()
+        public void Refil()
         {
             if (isRefilling) { return; }
+            StartCoroutine(RefilProcess());
+        }
 
+        public IEnumerator RefilProcess()
+        {
             isRefilling = true;
-            await m_progressMeter.ProgressFillProcess(m_RefilTime);
-            isRefilling = false;
 
-            base.m_state = ItemState.NORMAL;
-            m_graphics.SetActive(true);
+            Deselect();
 
+            yield return m_progressMeter.ProgressFillProcess(m_RefilTime);
+            yield return RefilAppearAnimation();
+        }
+
+        private IEnumerator RefilAppearAnimation()
+        {
+            //hide the placeholder
             if (m_placeHolder != null)
             {
                 m_placeHolder.SetActive(false);
             }
-           
-            m_outline.DisplayOutline(false);
+
+            //show the graphic and make it 0 scale
+            m_graphics.transform.localScale = Vector3.zero;
+            m_graphics.SetActive(true);
+
+            Vector3 addition = new Vector3(Time.deltaTime * m_foodRefilSpeed, Time.deltaTime * m_foodRefilSpeed, Time.deltaTime * m_foodRefilSpeed);
+
+            while(m_graphics.transform.localScale.z < 1f)
+            {
+                m_graphics.transform.localScale += addition;
+                yield return null;
+            }
+
+           m_graphics.transform.localScale = Vector3.one;
+           isRefilling = false;
         }
+
+       
     }
 }
