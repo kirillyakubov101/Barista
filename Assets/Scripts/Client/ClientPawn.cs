@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Barista.Clients
 {
-
     public class ClientPawn : MonoBehaviour
     {
         public Transform m_TargetTransform = null;
@@ -17,6 +16,7 @@ namespace Barista.Clients
         private WaitForSeconds m_delay = new WaitForSeconds(.5f);
         private Animator m_Animator;
         private ClientTaskSystem m_clientTaskSystem;
+        private PatienceBar m_patienceBar;
 
         readonly int idleHashIndex = Animator.StringToHash("Idle");
         readonly int walkHashIndex = Animator.StringToHash("Walk");
@@ -27,13 +27,13 @@ namespace Barista.Clients
         {
             m_Animator = GetComponent<Animator>();
             m_clientTaskSystem = GetComponent<ClientTaskSystem>();
+            m_patienceBar = GetComponent<PatienceBar>();
         }
 
         private void Start()
         {
             m_Animator.CrossFadeInFixedTime(walkHashIndex, 0.25f);
         }
-
 
         public void InitSpawnedClient(Transform newGoal,Transform playerTranform,Transform startTransform)
         {
@@ -74,6 +74,7 @@ namespace Barista.Clients
             }
 
             m_CurrentTransform = m_TargetTransform;
+            m_patienceBar.StartPatienceBar(); //the client reached either the line or the counter, now he waits
         }
 
         private IEnumerator LookTowardsThePlayer()
@@ -93,6 +94,7 @@ namespace Barista.Clients
             }
         }
 
+        //Get the order from the barista
         public void RecieveOrder(bool isCorrectOrder)
         {
             if (isCorrectOrder)
@@ -109,6 +111,7 @@ namespace Barista.Clients
             }
         }
 
+        //Leave the store process
         private IEnumerator LeaveProcess()
         {
             m_Animator.CrossFadeInFixedTime(walkHashIndex, 0.25f);
@@ -140,7 +143,6 @@ namespace Barista.Clients
                 yield return null;
             }
         }
-
 
     }
 }

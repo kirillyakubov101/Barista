@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Barista.Clients
 {
-    public class CientFlowTaskSystem : MonoBehaviour
+    public class ClientFlowTaskSystem : MonoBehaviour
     {
         private Queue<IEnumerator> m_ListOfTasks = new Queue<IEnumerator>();
         private bool m_isProcessing = false;

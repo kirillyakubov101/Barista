@@ -11,6 +11,7 @@ namespace Barista.Order
 {
     public class OrderHandler : Singleton<OrderHandler>
     {
+        //events for the UI
         public event Action OnOrderGenerated;
         public event Action<bool> OnOrderComplete;
 

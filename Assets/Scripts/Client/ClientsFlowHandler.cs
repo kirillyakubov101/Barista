@@ -22,14 +22,14 @@ namespace Barista.Clients
         public int m_currentLinePositionIndex = 0;
         private Transform m_CounterTransform;
         private float m_sleepTime = 2f;
-        private CientFlowTaskSystem m_cientFlowTaskSystem;
+        private ClientFlowTaskSystem m_cientFlowTaskSystem;
         private AnimGraph m_ClientsArrivalGraph;
         public int m_currentAmountOfClients = 0;
         private float m_timer = 0f;
 
         private void Awake()
         {
-            m_cientFlowTaskSystem = GetComponent<CientFlowTaskSystem>();
+            m_cientFlowTaskSystem = GetComponent<ClientFlowTaskSystem>();
             m_ClientsArrivalGraph = GetComponent<AnimGraph>();
         }
 
