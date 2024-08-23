@@ -6,6 +6,7 @@ using Barista.Menu;
 using MyUtils;
 using Barista.UI;
 using Barista.Order;
+using Barista.Sounds;
 
 namespace Barista.Core
 {
@@ -23,8 +24,8 @@ namespace Barista.Core
         public async void PopulateCart(FoodType food)
         {
             if (CartFull()) { ErrorSystem.Instance.DisplayError(ErrorType.CartFull); return; }
-          
 
+            SoundHandler.Instance.PlayTakeitemSound(true);
             m_pickedFoodTypes.Add(food);
 
             //load the picked object GRAPHICS and put it in the cart

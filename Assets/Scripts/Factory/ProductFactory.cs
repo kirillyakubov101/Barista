@@ -60,6 +60,5 @@ namespace Barista.Factory
         {
             Addressables.ReleaseInstance(obj);
         }
-
     }
 }
