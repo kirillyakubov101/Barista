@@ -17,6 +17,7 @@ namespace Barista.Clients
         private Animator m_Animator;
         private ClientTaskSystem m_clientTaskSystem;
         private PatienceBar m_patienceBar;
+        private bool m_isPatienceBarStarted = false;
 
         readonly int idleHashIndex = Animator.StringToHash("Idle");
         readonly int walkHashIndex = Animator.StringToHash("Walk");
@@ -74,7 +75,12 @@ namespace Barista.Clients
             }
 
             m_CurrentTransform = m_TargetTransform;
-            m_patienceBar.StartPatienceBar(); //the client reached either the line or the counter, now he waits
+            if(!m_isPatienceBarStarted)
+            {
+                m_isPatienceBarStarted = true;
+                m_patienceBar.StartPatienceBar(); //the client reached either the line or the counter, now he waits
+            }
+            
         }
 
         private IEnumerator LookTowardsThePlayer()
