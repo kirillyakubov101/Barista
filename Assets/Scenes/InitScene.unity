@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CursorTexture: {fileID: 2800000, guid: f1293ac287f0ab647a3c01cd836069e4, type: 3}
-  m_HoverCursorTexture: {fileID: 2800000, guid: 24d861a1c1a970849af2b58f5acee049, type: 3}
+  m_HoverCursorTexture: {fileID: 2800000, guid: 82c183a21e2cbb945962d8fd2c58f3b5, type: 3}
 --- !u!1 &968150335
 GameObject:
   m_ObjectHideFlags: 0

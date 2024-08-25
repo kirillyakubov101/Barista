@@ -32,21 +32,21 @@ namespace Barista.Core
         private void HandlePrimaryActionEvent()
         {
             SoundHandler.Instance.PlayEmptyClick(false);
-            m_Raycaster.RayCastFromMouse(out bool m_hasHit, out RaycastHit m_Hitinfo);
-            if (m_hasHit)
+           
+            if (m_Raycaster.HasHit)
             {
                 //food
-                if (m_Hitinfo.transform.TryGetComponent(out ISelectable item))
+                if (m_Raycaster.Hitinfo.transform.TryGetComponent(out ISelectable item))
                 {
                     FoodSelectionProcess(item);
                 }
                 //machines
-                else if (m_Hitinfo.transform.TryGetComponent(out Machines.BeverageMachine machine))
+                else if (m_Raycaster.Hitinfo.transform.TryGetComponent(out Machines.BeverageMachine machine))
                 {
                     machine.MakeBeverage();
                 }
                 //cart
-                else if (m_Hitinfo.transform.TryGetComponent(out Cart cart))
+                else if (m_Raycaster.Hitinfo.transform.TryGetComponent(out Cart cart))
                 {
                     cart.SubmitCartOrder();
                 }
