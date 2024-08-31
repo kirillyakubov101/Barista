@@ -15,6 +15,7 @@ namespace Barista.Clients
     public class ClientMood : ScriptableObject
     {
         public Mood m_Mood;
+        public Texture2D m_Texture;
         public float m_time;
     }
 }

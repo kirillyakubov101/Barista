@@ -14,6 +14,13 @@ namespace Barista.MyCamera
 
         private int m_activeCameraIndex = 1;
 
+        //return the main camera transform for the emotes
+        public Transform GetCenterCameraTransform()
+        {
+            return m_cameras[1].transform;
+        }
+        
+
         private void Start()
         {
             OnCameraSwitch?.Invoke(m_cameras[1]);
