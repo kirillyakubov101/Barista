@@ -2,7 +2,7 @@ using Barista.MyCamera;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Barista
+namespace Barista.Clients
 {
     public class EmoteHandler : MonoBehaviour
     {
@@ -10,20 +10,18 @@ namespace Barista
         [SerializeField] private Animator m_animator;
 
         private static Transform m_CenterCameraTransform = null;
+        readonly int ShowTriggerId = Animator.StringToHash("Show");
 
-        public void ShowEmote()
+        private void ShowEmote()
         {
-
+            m_animator.SetTrigger(ShowTriggerId);
         }
 
-        public void HideEmote()
+        public void ChangeEmote(Mood clientMood)
         {
-
-        }
-
-        public void ChangeEmote()
-        {
-
+            ClientMood currentClientMood = MoodLoader.Instance.GetClientMood(clientMood);
+            m_emoteImageContainer.sprite = currentClientMood.m_Sprite;
+            ShowEmote();
         }
 
         private void Start()

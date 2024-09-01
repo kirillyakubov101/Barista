@@ -82,7 +82,7 @@ namespace Barista.Core
 
         public void SubmitCartOrder()
         {
-            if(m_foodItemsInCart == 0 || MenuFactory.Instance.CurrentRecipe.Count == 0) { return; }
+            if(m_foodItemsInCart == 0 || MenuFactory.Instance.CurrentRecipe.Count == 0 || OrderHandler.Instance.m_currentClient == null) { return; }
 
             OrderHandler.Instance.SubmitOrderToClient(m_pickedFoodTypes);
 

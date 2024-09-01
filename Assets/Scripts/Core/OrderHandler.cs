@@ -35,6 +35,14 @@ namespace Barista.Order
             m_currentClient = null;
         }
 
+        public void FailToSubmitOrderOnTime()
+        {
+            if(m_currentClient == null) { return; }
+            OnOrderComplete?.Invoke(false);
+            m_currentClient.RecieveOrder(false);
+            m_currentClient = null;
+        }
+
         //Client ordered food
         public void TakeOrderFromClient(ClientPawn client)
         {

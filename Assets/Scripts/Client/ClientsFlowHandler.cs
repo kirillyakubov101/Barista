@@ -2,7 +2,6 @@ using UnityEngine;
 using MyUtils;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 
 namespace Barista.Clients
 {
@@ -16,15 +15,14 @@ namespace Barista.Clients
         [SerializeField] private ClientPawn m_clientPrefab;
         [SerializeField] private LayerMask m_ClientLayerMask;
 
-        public List<ClientPawn> TestListOfClients = new List<ClientPawn>();
+        public int m_currentLinePositionIndex = 0;
+        public int m_currentAmountOfClients = 0;
 
         private LinkedList<ClientPawn> m_ListOfClients = new LinkedList<ClientPawn>(); //Linked List of Clients
-        public int m_currentLinePositionIndex = 0;
         private Transform m_CounterTransform;
-        private float m_sleepTime = 2f;
+        private float m_sleepTime = 4f;
         private ClientFlowTaskSystem m_cientFlowTaskSystem;
         private AnimGraph m_ClientsArrivalGraph;
-        public int m_currentAmountOfClients = 0;
         private float m_timer = 0f;
 
         private void Awake()
@@ -62,7 +60,6 @@ namespace Barista.Clients
         {
             if(m_currentAmountOfClients == 0) { return; }
 
-            TestListOfClients.Remove(m_ListOfClients.First.Value); //test
             m_ListOfClients.RemoveFirst();
 
             m_currentLinePositionIndex--;
@@ -90,7 +87,7 @@ namespace Barista.Clients
 
 
                 CurrentNode = CurrentNode.Next;
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
 
@@ -98,28 +95,12 @@ namespace Barista.Clients
 
         private void SpawnClient()
         {
-
-            //bool canSpawn = !IsSpawnPlaceOccupied(out Transform SpawnPoint);
-
-            //if(canSpawn)
-            //{
-            //    var newClient = Instantiate<ClientPawn>(m_clientPrefab, SpawnPoint.position, SpawnPoint.rotation);
-            //    m_ListOfClients.AddLast(newClient);
-
-            //    newClient.InitSpawnedClient(m_LinePositions[m_currentLinePositionIndex], m_PlayerApproxTransform, SpawnPoint);
-            //    m_currentAmountOfClients++;
-            //    m_currentLinePositionIndex++;
-            //    TestListOfClients.Add(newClient); //test
-            //}
-
-
             var newClient = Instantiate<ClientPawn>(m_clientPrefab, m_clientSpawnPoints[0].position, m_clientSpawnPoints[0].rotation);
             m_ListOfClients.AddLast(newClient);
 
             newClient.InitSpawnedClient(m_LinePositions[m_currentLinePositionIndex], m_PlayerApproxTransform, m_clientSpawnPoints[0]);
             m_currentAmountOfClients++;
             m_currentLinePositionIndex++;
-            TestListOfClients.Add(newClient); //test
 
         }
 

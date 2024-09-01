@@ -13345,7 +13345,6 @@ MonoBehaviour:
   m_ClientLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  TestListOfClients: []
   m_currentLinePositionIndex: 0
   m_currentAmountOfClients: 0
 --- !u!114 &1970053924
@@ -13387,6 +13386,15 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 20
+      value: 2
+      inSlope: 0.00040283057
+      outSlope: 0.00040283057
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.046432342
+      outWeight: 0
+    - serializedVersion: 3
+      time: 40
       value: 4
       inSlope: 0
       outSlope: 0

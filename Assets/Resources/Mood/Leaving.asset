@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Leaving
   m_EditorClassIdentifier: 
   m_Mood: 4
+  m_Sprite: {fileID: 21300000, guid: a4ed42de71e0aa24b9a72148a19ce243, type: 3}
   m_time: 5

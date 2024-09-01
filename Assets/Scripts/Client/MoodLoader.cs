@@ -7,7 +7,7 @@ namespace Barista.Clients
     public class MoodLoader : Singleton<MoodLoader>
     {
         private ClientMood[] m_moods = null;
-        private Dictionary<Mood, float> m_moodLevels = new Dictionary<Mood, float>();
+        private Dictionary<Mood, ClientMood> m_moodLevels = new Dictionary<Mood, ClientMood>();
 
         private void Awake()
         {
@@ -18,24 +18,19 @@ namespace Barista.Clients
         {
             foreach(var mood in m_moods)
             {
-                m_moodLevels.Add(mood.m_Mood,mood.m_time);
+                m_moodLevels.Add(mood.m_Mood, mood);
             }
         }
 
-        public float GetPatienceTime(Mood mood)
+        public ClientMood GetClientMood(Mood mood)
         {
-            bool success = m_moodLevels.TryGetValue(mood, out float value);
+            if(m_moodLevels.Count <= 0) { return null; }
 
-            if (success)
-            {
-                return value;
-            }
-            else
-            {
-                print("GetPatienceTime wrong mood");
-                return -1f;
-            }
+            m_moodLevels.TryGetValue(mood, out var client);
 
+            return client;
         }
+
+
     }
 }

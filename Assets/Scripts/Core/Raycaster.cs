@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Barista
+namespace Barista.Core
 {
     public class Raycaster : MonoBehaviour
     {

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Fair
   m_EditorClassIdentifier: 
   m_Mood: 1
+  m_Sprite: {fileID: 21300000, guid: aafca6f09d2e0fb40a5a6151bf06916b, type: 3}
   m_time: 13

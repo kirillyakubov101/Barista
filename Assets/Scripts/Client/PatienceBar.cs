@@ -1,3 +1,4 @@
+using Barista.Order;
 using System.Collections;
 using UnityEngine;
 
@@ -8,12 +9,29 @@ namespace Barista.Clients
         [SerializeField] private Mood ClientMood = Mood.Good;
 
         private float m_currentWaitTime;
+        private EmoteHandler m_emoteHandler;
+        private Coroutine m_coroutine;
+        private bool m_hasFailed = false;
+
+        public bool HasFailed { get => m_hasFailed; }
+
+        private void Awake()
+        {
+            m_emoteHandler = GetComponent<EmoteHandler>();
+        }
 
         public void StartPatienceBar()
         {
-            m_currentWaitTime = MoodLoader.Instance.GetPatienceTime(ClientMood);
+            m_currentWaitTime = MoodLoader.Instance.GetClientMood(ClientMood).m_time;
+            m_emoteHandler.ChangeEmote(ClientMood);
 
-            StartCoroutine(WaitForOrderProcess());
+
+            m_coroutine = StartCoroutine(WaitForOrderProcess());
+        }
+
+        public void StopPatienceBar()
+        {
+            StopCoroutine(m_coroutine);
         }
 
         private IEnumerator WaitForOrderProcess()
@@ -27,7 +45,18 @@ namespace Barista.Clients
             }
 
             ClientMood++;
-            m_currentWaitTime = MoodLoader.Instance.GetPatienceTime(ClientMood);
+
+            if((int)ClientMood > 4)
+            {
+                OrderHandler.Instance.FailToSubmitOrderOnTime();
+                m_hasFailed = true;
+                yield break;
+            }
+
+            m_emoteHandler.ChangeEmote(ClientMood);
+            m_currentWaitTime = MoodLoader.Instance.GetClientMood(ClientMood).m_time;
+            
+            yield return WaitForOrderProcess();
         }
     }
 }

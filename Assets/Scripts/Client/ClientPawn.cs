@@ -69,7 +69,7 @@ namespace Barista.Clients
 
 
             //if the client reached the counter (he is the first in line) he will make the order
-            if (m_TargetTransform.CompareTag("Goal") && m_TargetTransform != m_CurrentTransform)
+            if (m_TargetTransform.CompareTag("Goal") && m_TargetTransform != m_CurrentTransform && !m_patienceBar.HasFailed)
             {
                 OrderHandler.Instance.TakeOrderFromClient(this);
             }
@@ -103,6 +103,8 @@ namespace Barista.Clients
         //Get the order from the barista
         public void RecieveOrder(bool isCorrectOrder)
         {
+            m_patienceBar.StopPatienceBar();
+
             if (isCorrectOrder)
             {
                 ClientsFlowHandler.Instance.ProcessClientLeft();
