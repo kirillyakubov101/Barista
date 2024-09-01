@@ -9,7 +9,7 @@ namespace Barista.Clients
     {
         [Header("Transforms")]
         [SerializeField] private Transform[] m_LinePositions;
-        [SerializeField] private Transform[] m_clientSpawnPoints;
+        [SerializeField] private Transform m_clientSpawnPoint;
         [SerializeField] private Transform m_PlayerApproxTransform;
         [Header("Client Params")]
         [SerializeField] private ClientPawn m_clientPrefab;
@@ -37,6 +37,9 @@ namespace Barista.Clients
             {
                 m_CounterTransform = m_LinePositions[0];
             }
+
+            //make sure every client know about the player Pos
+            ClientPawn.SetPlayerAndStartTransform(m_PlayerApproxTransform, m_clientSpawnPoint);
         }
 
         private void Update()
@@ -69,8 +72,6 @@ namespace Barista.Clients
             {
                 m_cientFlowTaskSystem.AddNewTask(UpdateLineProcess());
             }
-
-
         }
 
         private IEnumerator UpdateLineProcess()
@@ -85,9 +86,8 @@ namespace Barista.Clients
                 CurrentNode.Value.m_TargetTransform = CurrentGoalTransform;
                 CurrentGoalTransform = PreviousTransform;
 
-
                 CurrentNode = CurrentNode.Next;
-                yield return new WaitForSeconds(0.1f);
+                yield return null;
             }
         }
 
@@ -95,29 +95,12 @@ namespace Barista.Clients
 
         private void SpawnClient()
         {
-            var newClient = Instantiate<ClientPawn>(m_clientPrefab, m_clientSpawnPoints[0].position, m_clientSpawnPoints[0].rotation);
+            var newClient = Instantiate<ClientPawn>(m_clientPrefab, m_clientSpawnPoint.position, m_clientSpawnPoint.rotation);
             m_ListOfClients.AddLast(newClient);
 
-            newClient.InitSpawnedClient(m_LinePositions[m_currentLinePositionIndex], m_PlayerApproxTransform, m_clientSpawnPoints[0]);
+            newClient.InitSpawnedClient(m_LinePositions[m_currentLinePositionIndex]);
             m_currentAmountOfClients++;
             m_currentLinePositionIndex++;
-
         }
-
-        private bool IsSpawnPlaceOccupied(out Transform spawnPos)
-        {
-            spawnPos = null;
-            int randomIndex = UnityEngine.Random.Range(0, m_clientSpawnPoints.Length);
-
-            spawnPos = m_clientSpawnPoints[randomIndex];
-
-            var hits = Physics.OverlapSphere(spawnPos.position, 2, m_ClientLayerMask,queryTriggerInteraction:QueryTriggerInteraction.Collide);
-
-            return hits.Length > 0;
-        }
-
-      
-
-
     }
 }

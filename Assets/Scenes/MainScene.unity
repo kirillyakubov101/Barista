@@ -4071,14 +4071,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655399180}
-  m_LocalRotation: {x: -0, y: 0.7191941, z: -0, w: -0.69480926}
-  m_LocalPosition: {x: 6.16, y: 0, z: 13.39}
+  m_LocalRotation: {x: -0, y: 0.58991826, z: -0, w: -0.807463}
+  m_LocalPosition: {x: 6.189, y: 0, z: 12.542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1392625147}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 268.024, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 287.698, z: 0}
 --- !u!1001 &658692373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13338,8 +13338,7 @@ MonoBehaviour:
   - {fileID: 1219501762}
   - {fileID: 1984753444}
   - {fileID: 702328049}
-  m_clientSpawnPoints:
-  - {fileID: 655399181}
+  m_clientSpawnPoint: {fileID: 655399181}
   m_PlayerApproxTransform: {fileID: 1492188496}
   m_clientPrefab: {fileID: 6877853723153184571, guid: 2f1b7f4fd32622243a60fba655c0a9e2, type: 3}
   m_ClientLayerMask:
