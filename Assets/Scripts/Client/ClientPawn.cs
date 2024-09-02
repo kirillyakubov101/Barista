@@ -48,24 +48,31 @@ namespace Barista.Clients
             count++;
             m_TargetTransform = newGoal;
 
-            m_clientTaskSystem.AddNewTask(GetInTheLineProcess(m_TargetTransform));
-            m_clientTaskSystem.AddNewTask(LookTowardsTheGoal());
+            m_clientTaskSystem.AddNewTask(LookTowardsTheCurrentGoal());
+            m_clientTaskSystem.AddNewTask(GetInTheLineProcess());
+            m_clientTaskSystem.AddNewTask(LookTowardsThePlayer());
         }
 
-        public void AdvanceTheLine(Transform newGoal)
+        public void AdvanceTheLine()
         {
             m_clientTaskSystem.ClearTasks();
-            m_clientTaskSystem.AddNewTask(GetInTheLineProcess(newGoal));
-            m_clientTaskSystem.AddNewTask(LookTowardsTheGoal());
+            m_clientTaskSystem.AddNewTask(LookTowardsTheCurrentGoal());
+            m_clientTaskSystem.AddNewTask(GetInTheLineProcess());
+            m_clientTaskSystem.AddNewTask(LookTowardsThePlayer());
         }
 
-        private IEnumerator GetInTheLineProcess(Transform GoalTransfrom)
+        public void SetCurrentGoal(Transform newGoal)
+        {
+            m_TargetTransform = newGoal;
+        }
+
+        private IEnumerator GetInTheLineProcess()
         {
             m_Animator.CrossFadeInFixedTime(walkHashIndex, 0.25f);
 
-            while (Vector3.Distance(transform.position, GoalTransfrom.position) > .2f)
+            while (Vector3.Distance(transform.position, m_TargetTransform.position) > .2f)
             {
-                Vector3 direction = GoalTransfrom.position - transform.position;
+                Vector3 direction = m_TargetTransform.position - transform.position;
                 direction.Normalize();
                 transform.position += direction * Time.deltaTime * 2f; // Use position for global movement
                 yield return null;
@@ -89,7 +96,7 @@ namespace Barista.Clients
             
         }
 
-        private IEnumerator LookTowardsTheGoal()
+        private IEnumerator LookTowardsThePlayer()
         {
             Vector3 direction = m_TargetTransform.position - s_startTransform.forward;
             direction.y = 0;
@@ -157,6 +164,27 @@ namespace Barista.Clients
                 yield return null;
             }
         }
+
+        private IEnumerator LookTowardsTheCurrentGoal()
+        {
+            Vector3 direction = m_TargetTransform.position - transform.position;
+            direction.y = 0;
+            Quaternion goalRotation = Quaternion.LookRotation(direction);
+            float angle = Quaternion.Angle(goalRotation, transform.rotation);
+
+            while (angle >= 2f)
+            {
+                angle = Quaternion.Angle(goalRotation, transform.rotation);
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, goalRotation, 15f * Time.deltaTime);
+
+                yield return null;
+            }
+
+        }
+
+      
+
 
     }
 }

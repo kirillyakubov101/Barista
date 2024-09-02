@@ -82,8 +82,8 @@ namespace Barista.Clients
             while (CurrentNode != null)
             {
                 Transform PreviousTransform = CurrentNode.Value.m_TargetTransform;
-                CurrentNode.Value.AdvanceTheLine(CurrentGoalTransform);
-                CurrentNode.Value.m_TargetTransform = CurrentGoalTransform;
+                CurrentNode.Value.SetCurrentGoal(CurrentGoalTransform);
+                CurrentNode.Value.AdvanceTheLine();
                 CurrentGoalTransform = PreviousTransform;
 
                 CurrentNode = CurrentNode.Next;
