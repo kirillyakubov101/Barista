@@ -1,10 +1,16 @@
 using Barista.Core;
 using Barista.Machines;
+using UnityEngine;
 
 namespace Barista.Food
 {
     public class PreparedFood : SimpleTake
     {
+        [SerializeField] private float m_TimeToExpire = 2f;
+        [SerializeField] private ParticleSystem m_expiredFoodVFX = null;
+
+        private bool m_Expired = false;
+
         public override void DoAction()
         {
             if (base.GetFoodType() == FoodType.Croissant)
@@ -16,7 +22,15 @@ namespace Barista.Food
                 Stove.Instance.EnableStove();
             }
 
-            Cart.Instance.PopulateCart(GetFoodType());
+            if(m_Expired)
+            {
+                print("trash it");
+            }
+            else
+            {
+                Cart.Instance.PopulateCart(GetFoodType());
+            }
+            
             DiscardPreparedFood();
         }
 
@@ -29,6 +43,26 @@ namespace Barista.Food
         public void ShowPreparedFood()
         {
             gameObject.SetActive(true);
+        }
+
+        private void OnEnable()
+        {
+            Invoke(nameof(Expire), m_TimeToExpire);
+        }
+
+        private void OnDisable()
+        {
+            m_Expired = false;
+            m_expiredFoodVFX.Stop();
+        }
+
+        private void Expire()
+        {
+            if(gameObject.activeSelf)
+            {
+                m_Expired = true;
+                m_expiredFoodVFX.Play();
+            }
         }
     }
 }

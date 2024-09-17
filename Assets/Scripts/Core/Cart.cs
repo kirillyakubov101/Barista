@@ -109,5 +109,15 @@ namespace Barista.Core
             m_foodItemsInCart = 0;
             m_currentPlacementIndex = 0;
         }
+
+        public void TrashBtnPress()
+        {
+            ClearTheCart();
+        }
+
+        public void SubmitBtnPress()
+        {
+            SubmitCartOrder();
+        }
     }
 }

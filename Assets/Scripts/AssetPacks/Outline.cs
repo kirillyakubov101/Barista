@@ -18,11 +18,19 @@ public class Outline : MonoBehaviour {
 
     [SerializeField] private float displayValue = 10f;
     private float hideValue = 0f;
+    public Color TrashOutline { get; private set; } = Color.black;
+    public Color DefaultColor { get; private set; }
     public void DisplayOutline(bool state)
     {
         outlineWidth = state ? displayValue : hideValue;
         UpdateMats();
 
+        UpdateMaterialProperties();
+    }
+
+    public void UpdateMatsRuntime()
+    {
+        UpdateMats();
         UpdateMaterialProperties();
     }
 
@@ -49,6 +57,7 @@ public class Outline : MonoBehaviour {
     private void Start()
     {
         UpdateMaterialProperties();
+        DefaultColor = this.outlineColor;
     }
 
 
