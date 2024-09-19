@@ -11,6 +11,7 @@ namespace Barista.Order
 {
     public class OrderHandler : Singleton<OrderHandler>
     {
+        //events for the UI
         public event Action OnOrderGenerated;
         public event Action<bool> OnOrderComplete;
 
@@ -31,6 +32,14 @@ namespace Barista.Order
                 m_currentClient.RecieveOrder(false);
             }
 
+            m_currentClient = null;
+        }
+
+        public void FailToSubmitOrderOnTime()
+        {
+            if(m_currentClient == null) { return; }
+            OnOrderComplete?.Invoke(false);
+            m_currentClient.RecieveOrder(false);
             m_currentClient = null;
         }
 

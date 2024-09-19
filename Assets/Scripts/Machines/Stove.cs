@@ -12,6 +12,7 @@ namespace Barista.Machines
         [SerializeField] private float m_prepareTime = 3f;
         [SerializeField] private PreparedFood m_preparedFood;
         [SerializeField] private GameObject m_dummyFood;
+        [SerializeField] private ParticleSystem m_OilVfx;
 
         private bool m_canHeat = true;
 
@@ -26,7 +27,7 @@ namespace Barista.Machines
             m_dummyFood.SetActive(true);
 
             SoundHandler.Instance.PlayStoveSound(true);
-
+            m_OilVfx.Play();
             StartCoroutine(ProcessCooking());
         }
 
@@ -46,6 +47,7 @@ namespace Barista.Machines
         {
             m_preparedFood.ShowPreparedFood();
             m_dummyFood.SetActive(false);
+            m_OilVfx.Stop();
 
             SoundHandler.Instance.PlayStoveSound(false);
         }

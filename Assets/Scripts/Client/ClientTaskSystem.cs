@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,5 +39,14 @@ namespace Barista.Clients
         }
 
         public int GetTasksAmount() { return m_ListOfTasks.Count; }
+
+        public void ClearTasks()
+        {
+            if (!m_isProcessing) { return; }
+
+            m_isProcessing = false;
+            StopCoroutine(m_mainTaskThread);
+            m_ListOfTasks.Clear();
+        }
     }
 }

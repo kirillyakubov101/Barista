@@ -5,6 +5,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using Barista.Food;
 using System.Threading.Tasks;
 using MyUtils;
+using System.Collections;
+using System;
 
 namespace Barista.Factory
 {
@@ -56,10 +58,31 @@ namespace Barista.Factory
             return returnInst;
         }
 
+        public IEnumerator LoadFoodNew(FoodType food, Action<GameObject> callback)
+        {
+            GameObject returnInst = null;
+            AsyncOperationHandle<GameObject> operation;
+
+            if (!m_foods.ContainsKey(food))
+            {
+                callback?.Invoke(null);
+                yield break;
+            }
+
+            operation = Addressables.InstantiateAsync(m_foods[food]);
+            yield return operation;
+
+            if (operation.Status == AsyncOperationStatus.Succeeded)
+            {
+                returnInst = operation.Result;
+            }
+
+            callback?.Invoke(returnInst);
+        }
+
         public void Release(GameObject obj)
         {
             Addressables.ReleaseInstance(obj);
         }
-
     }
 }

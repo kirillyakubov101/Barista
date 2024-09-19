@@ -6,6 +6,8 @@ using Barista.Menu;
 using MyUtils;
 using Barista.UI;
 using Barista.Order;
+using Barista.Sounds;
+using System.Collections;
 
 namespace Barista.Core
 {
@@ -18,13 +20,49 @@ namespace Barista.Core
         private int m_currentPlacementIndex = 0;
         private int m_foodItemsInCart = 0;
 
+        public void PopulateCart(FoodType food)
+        {
+            if (CartFull())
+            {
+                ErrorSystem.Instance.DisplayError(ErrorType.CartFull);
+                return;
+            }
 
+            SoundHandler.Instance.PlayTakeitemSound(true);
+            m_pickedFoodTypes.Add(food);
 
-        public async void PopulateCart(FoodType food)
+            // Start the coroutine to load the picked object GRAPHICS and put it in the cart
+            StartCoroutine(LoadAndPlaceFood(food));
+        }
+
+        private IEnumerator LoadAndPlaceFood(FoodType food)
+        {
+            GameObject inst = null;
+            // Load the food using coroutine
+
+            yield return StartCoroutine(ProductFactory.Instance.LoadFoodNew(food, result => inst = result));
+          
+            if (inst != null)
+            {
+                m_pickedItems[m_currentPlacementIndex] = inst;
+                inst.transform.parent = m_placements[m_currentPlacementIndex].transform;
+                inst.transform.position = m_placements[m_currentPlacementIndex].transform.position;
+
+                m_foodItemsInCart++;
+                m_currentPlacementIndex++;
+
+                if (m_currentPlacementIndex == m_pickedItems.Length)
+                {
+                    m_currentPlacementIndex = m_pickedItems.Length - 1;
+                }
+            }
+        }
+
+        public async void PopulateCartOld(FoodType food)
         {
             if (CartFull()) { ErrorSystem.Instance.DisplayError(ErrorType.CartFull); return; }
-          
 
+            SoundHandler.Instance.PlayTakeitemSound(true);
             m_pickedFoodTypes.Add(food);
 
             //load the picked object GRAPHICS and put it in the cart
@@ -44,7 +82,7 @@ namespace Barista.Core
 
         public void SubmitCartOrder()
         {
-            if(m_foodItemsInCart == 0 || MenuFactory.Instance.CurrentRecipe.Count == 0) { return; }
+            if(m_foodItemsInCart == 0 || MenuFactory.Instance.CurrentRecipe.Count == 0 || OrderHandler.Instance.m_currentClient == null) { return; }
 
             OrderHandler.Instance.SubmitOrderToClient(m_pickedFoodTypes);
 
@@ -70,6 +108,16 @@ namespace Barista.Core
 
             m_foodItemsInCart = 0;
             m_currentPlacementIndex = 0;
+        }
+
+        public void TrashBtnPress()
+        {
+            ClearTheCart();
+        }
+
+        public void SubmitBtnPress()
+        {
+            SubmitCartOrder();
         }
     }
 }

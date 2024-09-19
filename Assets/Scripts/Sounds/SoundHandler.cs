@@ -17,8 +17,27 @@ namespace Barista.Sounds
         [SerializeField] private AudioSource m_ErrorAudioSource;
         [Header("Correct")]
         [SerializeField] private AudioSource m_CorrectAudioSource;
+        [Header("EmptyClick")]
+        [SerializeField] private AudioSource m_EmptyClickAudioSource;
+        [Header("TakeItem")]
+        [SerializeField] private AudioSource m_TakeItemAudioSource;
+        [Header("Refil")]
+        [SerializeField] private AudioSource m_RefilItemAudioSource;
 
+        public void PlayTakeitemSound(bool state)
+        {
+            ProccessState(state, m_TakeItemAudioSource);
+        }
 
+        public void PlayRefilSound(bool state)
+        {
+            ProccessState(state, m_RefilItemAudioSource);
+        }
+
+        public void PlayEmptyClick(bool state)
+        {
+            ProccessState(state, m_EmptyClickAudioSource);
+        }
 
         public void PlayStoveSound(bool state)
         {

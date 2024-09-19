@@ -6,6 +6,7 @@ public class AnimGraph : MonoBehaviour
 
     public int GetCurrentMaxClients()
     {
+        //print(Mathf.CeilToInt(_graph.Evaluate(Time.time)));
         return Mathf.CeilToInt(_graph.Evaluate(Time.time));
     }
    
