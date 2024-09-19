@@ -156,7 +156,7 @@ Transform:
   - {fileID: 6917564261107888932}
   - {fileID: 6917564260986691510}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6917564259402080581
 MonoBehaviour:
@@ -186,11 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54756985c96cdb42a160f97e725fc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
-  m_Layer:
-    serializedVersion: 2
-    m_Bits: 1024
-  m_RayCastDistance: 100
 --- !u!114 &7603022073404880996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,9 +274,9 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 4
   m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
+  m_SensorSize: {x: 54.79, y: 16.9}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 16.9
+  m_FocalLength: 27
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -290,7 +285,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 63.2
   orthographic: 0
   orthographic size: 0.931
   m_Depth: 0
@@ -631,3 +626,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4496509955585924233, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
   m_PrefabInstance: {fileID: 6802388102346720063}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6917564260986691511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4496509955585924232, guid: 98f06a0fbacce684c9291719edb4a3b8, type: 3}
+  m_PrefabInstance: {fileID: 6802388102346720063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3097445114063320007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917564260986691511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1577299bf5dd99c45b8a350a80563f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
