@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using MyUtils;
@@ -12,12 +10,24 @@ namespace Barista.Shift
         public UnityEvent OnEndShift;
         public UnityEvent OnFailShift;
 
-        private void OnEanble
+        private void Start()
         {
-            
+            OnStartShift.Invoke();
         }
 
-        void StartShift() {}
+        private void OnEnable()
+        {
+            OnStartShift.AddListener(StartShift);
+            OnEndShift.AddListener(EndShift);
+            OnFailShift.AddListener(FailShift);
+        }
+
+        void StartShift()
+        {
+
+        }
+
+
         void EndShift() { }
         void FailShift() { }
     }
