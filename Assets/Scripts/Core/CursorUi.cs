@@ -23,6 +23,7 @@ namespace Barista.Core
 
         private void ChangeCursor(bool state)
         {
+            if (!ApplicationWrapper.Instance) { return; }
             ApplicationWrapper.Instance.ChangeCursor(state);
         }
 

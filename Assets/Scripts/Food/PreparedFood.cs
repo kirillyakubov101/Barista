@@ -22,15 +22,11 @@ namespace Barista.Food
                 Stove.Instance.EnableStove();
             }
 
-            if(m_Expired)
-            {
-                print("trash it");
-            }
-            else
+            if(!m_Expired)
             {
                 Cart.Instance.PopulateCart(GetFoodType());
             }
-            
+           
             DiscardPreparedFood();
         }
 

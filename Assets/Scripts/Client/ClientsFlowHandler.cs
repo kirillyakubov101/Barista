@@ -15,9 +15,10 @@ namespace Barista.Clients
         [SerializeField] private ClientPawn m_clientPrefab;
         [SerializeField] private LayerMask m_ClientLayerMask;
 
-        public int m_currentLinePositionIndex = 0;
-        public int m_currentAmountOfClients = 0;
+        public bool ClientsArrive { get; set; } = false;
 
+        private int m_currentLinePositionIndex = 0;
+        private int m_currentAmountOfClients = 0;
         private LinkedList<ClientPawn> m_ListOfClients = new LinkedList<ClientPawn>(); //Linked List of Clients
         private Transform m_CounterTransform;
         private float m_sleepTime = 4f;
@@ -44,6 +45,7 @@ namespace Barista.Clients
 
         private void Update()
         {
+            if (!ClientsArrive) { return; }
             if(m_timer >= m_sleepTime)
             {
                 m_timer = 0f;

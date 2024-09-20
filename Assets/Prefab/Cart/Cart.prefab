@@ -445,8 +445,7 @@ GameObject:
   - component: {fileID: 6301816613756560133}
   - component: {fileID: 228753427222769275}
   - component: {fileID: 265411337121022358}
-  - component: {fileID: 5875708985167903306}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,19 +542,6 @@ MonoBehaviour:
   - {fileID: 5780261920192194432}
   - {fileID: 6222958672500469496}
   m_pickedFoodTypes: 
---- !u!65 &5875708985167903306
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6523020042121300848}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.89295095, y: 0.16517664, z: 0.5416708}
-  m_Center: {x: 0, y: 0.08258831, z: 0}
 --- !u!1 &6758666423050784632
 GameObject:
   m_ObjectHideFlags: 0

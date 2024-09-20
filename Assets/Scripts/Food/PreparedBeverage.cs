@@ -25,15 +25,11 @@ namespace Barista.Food
         {
             base.m_state = ItemState.NORMAL;
 
-            if (m_Expired)
-            {
-                print("trash it");
-            }
-            else
+            if (!m_Expired)
             {
                 Cart.Instance.PopulateCart(GetFoodType());
             }
-
+         
             m_outline.DisplayOutline(false);
             gameObject.SetActive(false);
         }

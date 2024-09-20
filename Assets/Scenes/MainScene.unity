@@ -9001,7 +9001,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415269656}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d069ae2f2c4be254b8df25c7d65e2d3d, type: 3}
   m_Name: 
@@ -9018,7 +9018,7 @@ MonoBehaviour:
   BrightLightMapColor:
   - {fileID: 2800000, guid: 0cbcf7441eef6f7488da6ebe81015229, type: 3}
   - {fileID: 2800000, guid: 3e63ebba87a0fe2419697a1be59521be, type: 3}
-  test: 0
+  test: 1
 --- !u!1 &1415954089
 GameObject:
   m_ObjectHideFlags: 0
@@ -9489,8 +9489,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1092976250}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10931,6 +10930,7 @@ Transform:
   - {fileID: 1737284189}
   - {fileID: 1812204472}
   - {fileID: 1952739393}
+  - {fileID: 1092976250}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11937,7 +11937,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 2
-    m_TransformParent: {fileID: 1440323017}
+    m_TransformParent: {fileID: 1572011277}
     m_Modifications:
     - target: {fileID: 100000, guid: 11f590721e3924264bebcdf8ba152dd0, type: 3}
       propertyPath: m_Name
@@ -13371,8 +13371,6 @@ MonoBehaviour:
   m_ClientLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  m_currentLinePositionIndex: 0
-  m_currentAmountOfClients: 0
 --- !u!114 &1970053924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23140,35 +23138,127 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
-      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: OnEndShift.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
-      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      propertyPath: OnFailShift.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnNightTimeStart.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnEndShift.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnFailShift.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnEndShift.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1970053923}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnFailShift.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1970053923}
     - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
       propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 160125243}
     - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
-      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1970053923}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnEndShift.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
-      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      propertyPath: OnEndShift.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_ClientsArrive
       objectReference: {fileID: 0}
     - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
-      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Animator, UnityEngine
+      propertyPath: OnFailShift.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
-      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Play
+      propertyPath: OnNightTimeStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
-      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: OnFailShift.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_ClientsArrive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnNightTimeStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1415269658}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_ClientsArrive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnNightTimeStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnNightTimeStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnEndShift.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Barista.Clients.ClientsFlowHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnFailShift.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Barista.Clients.ClientsFlowHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Barista.Clients.ClientsFlowHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnNightTimeStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnNightTimeStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnEndShift.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnFailShift.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnStartShift.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097445114063320007, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
+      propertyPath: OnNightTimeStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6917564259363714252, guid: 55c7a01736dc2cd45a1415ed273073ad, type: 3}
