@@ -2,6 +2,8 @@ using UnityEngine;
 using MyUtils;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Net;
 
 namespace Barista.Clients
 {
@@ -12,7 +14,6 @@ namespace Barista.Clients
         [SerializeField] private Transform m_clientSpawnPoint;
         [SerializeField] private Transform m_PlayerApproxTransform;
         [Header("Client Params")]
-        [SerializeField] private ClientPawn m_clientPrefab;
         [SerializeField] private LayerMask m_ClientLayerMask;
 
         public bool ClientsArrive { get; set; } = false;
@@ -97,10 +98,15 @@ namespace Barista.Clients
 
         private void SpawnClient()
         {
-            var newClient = Instantiate<ClientPawn>(m_clientPrefab, m_clientSpawnPoint.position, m_clientSpawnPoint.rotation);
-            m_ListOfClients.AddLast(newClient);
+            ClientDatabase.Instance.SpawnNewClient(HandleClientSpawned, m_clientSpawnPoint.position, m_clientSpawnPoint.rotation);
+        }
 
-            newClient.InitSpawnedClient(m_LinePositions[m_currentLinePositionIndex]);
+        private void HandleClientSpawned(GameObject newClientOBJ)
+        {
+            var clientPawn = newClientOBJ.GetComponent<ClientPawn>();
+            m_ListOfClients.AddLast(clientPawn);
+
+            clientPawn.InitSpawnedClient(m_LinePositions[m_currentLinePositionIndex]);
             m_currentAmountOfClients++;
             m_currentLinePositionIndex++;
         }

@@ -146,7 +146,7 @@ namespace Barista.Clients
                 yield return null;
             }
             gameObject.name = "about to be destroyed!";
-            Destroy(gameObject,5f);
+            ClientDatabase.Instance.Release(gameObject);
         }
 
         private IEnumerator LookTowardsStart()
