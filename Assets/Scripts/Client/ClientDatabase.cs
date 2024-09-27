@@ -10,12 +10,12 @@ namespace Barista.Clients
 
     public class ClientDatabase : Singleton<ClientDatabase>
     {
-        [SerializeField] private AssetReferenceGameObject Client_Kate;
+        [SerializeField] private AssetReferenceGameObject[] ListOfClientPrefabs;
 
         public void SpawnNewClient(Action<GameObject> callback,Vector3 pos, Quaternion rot)
         {
-
-            AsyncOperationHandle<GameObject> handle = Client_Kate.InstantiateAsync(pos,rot);
+            int randomIndex = UnityEngine.Random.Range(0, ListOfClientPrefabs.Length);
+            AsyncOperationHandle<GameObject> handle = ListOfClientPrefabs[randomIndex].InstantiateAsync(pos,rot);
 
             handle.Completed += (operation) =>
             {

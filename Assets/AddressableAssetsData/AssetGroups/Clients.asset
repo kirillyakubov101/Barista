@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f1b7f4fd32622243a60fba655c0a9e2
+    m_Address: Assets/Prefab/Clients/Client_black.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: a29a0c6bdc863d2448eb89fc6e9f40cd, type: 2}
   m_SchemaSet:

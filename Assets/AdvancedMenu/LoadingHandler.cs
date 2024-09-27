@@ -15,6 +15,8 @@ namespace AdvancedMenu
         private Image m_faderImage;
         private AsyncOperation m_asyncOperation;
 
+        public static event Action OnLoadingComplete;
+
         private void Awake()
         {
             m_faderImage = m_fader.GetComponent<Image>();
@@ -40,10 +42,12 @@ namespace AdvancedMenu
                 yield return null;
             }
 
-            yield return new WaitForSeconds(4); //loading time artificial
+            yield return new WaitForSeconds(0.5f); //loading time artificial
             m_loadingScreen.gameObject.SetActive(false);
 
             yield return FadeOutCoroutine();
+
+            OnLoadingComplete?.Invoke();
         }
 
         public IEnumerator StartFadeIn()
@@ -61,7 +65,6 @@ namespace AdvancedMenu
 
             while (timer < maxTimer)
             {
-               
                 cache.a = progress;
                 m_faderImage.color = cache;
                 timer += Time.deltaTime;

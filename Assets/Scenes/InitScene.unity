@@ -131,14 +131,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 288291278, guid: 1106feb12bccfc94a9d50a83999dc9f3, type: 3}
-      propertyPath: m_CursorTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: bac640093d8697843a8b068f7a8d90d6, type: 3}
-    - target: {fileID: 288291278, guid: 1106feb12bccfc94a9d50a83999dc9f3, type: 3}
-      propertyPath: m_HoverCursorTexture
-      value: 
-      objectReference: {fileID: 2800000, guid: d07b2abfea6d63f418002ddc17d2d3f6, type: 3}
     - target: {fileID: 127250807748154132, guid: 1106feb12bccfc94a9d50a83999dc9f3, type: 3}
       propertyPath: m_RootOrder
       value: 0

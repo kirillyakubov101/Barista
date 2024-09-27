@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using MyUtils;
 using System.Collections;
 using Barista.Order;
+using AdvancedMenu;
 
 namespace Barista.Shift
 {
@@ -21,8 +22,9 @@ namespace Barista.Shift
         private bool m_isNightTimeEnabled = false;
         private WaitForSeconds m_delayTime = new WaitForSeconds(2f);
 
-        private void Start()
+        private void BeginPlay()
         {
+            GameManager.Instance.ContinueGame();
             StartCoroutine(MainGameLoop());
         }
 
@@ -67,6 +69,7 @@ namespace Barista.Shift
             OnFailShift.AddListener(FailShift);
 
             OrderHandler.Instance.OnOrderComplete += IncrementServedClient;
+            LoadingHandler.OnLoadingComplete += BeginPlay;
         }
 
         private void OnDisable()
@@ -75,12 +78,9 @@ namespace Barista.Shift
             {
                 OrderHandler.Instance.OnOrderComplete += IncrementServedClient;
             }
-            
-        }
 
-        private void StartShift()
-        {
-            
+            LoadingHandler.OnLoadingComplete -= BeginPlay;
+
         }
 
         private void InitRequiredClients()
@@ -89,17 +89,19 @@ namespace Barista.Shift
             m_currentAmountOfNightTimeClients = GetRandomNumberOfClients(5, 8);
         }
 
+        private void StartShift()
+        {
+        }
 
         private void EndShift() 
         {
             m_currentAmountOfClientsVisited = 0;
             m_amountOfShiftFailures = 0;
-
-            print("shift done");
+            GameManager.Instance.PauseGame();
         }
         private void FailShift() 
         {
-            print("fail");
+            GameManager.Instance.PauseGame();
         }
 
         private int GetRandomNumberOfClients(int a, int b)
@@ -109,7 +111,6 @@ namespace Barista.Shift
 
         private void NightTimeStart()
         {
-            print("NIGHT");
             OnNightTimeStart.Invoke();
         }
     }

@@ -1,5 +1,4 @@
 using Barista.Order;
-using Barista.Shift;
 using System.Collections;
 using UnityEngine;
 
@@ -23,8 +22,6 @@ namespace Barista.Clients
         readonly int idleHashIndex = Animator.StringToHash("Idle");
         readonly int walkHashIndex = Animator.StringToHash("Walk");
 
-        static int count = 0;
-
         public static void SetPlayerAndStartTransform(Transform playerTransform,Transform startTransform)
         {
             s_PlayerTransform = playerTransform;
@@ -45,8 +42,7 @@ namespace Barista.Clients
 
         public void InitSpawnedClient(Transform newGoal)
         {
-            name = count.ToString();
-            count++;
+
             m_TargetTransform = newGoal;
 
             m_clientTaskSystem.AddNewTask(LookTowardsTheCurrentGoal());
@@ -99,19 +95,40 @@ namespace Barista.Clients
 
         private IEnumerator LookTowardsThePlayer()
         {
-            Vector3 direction = m_TargetTransform.position - s_startTransform.forward;
+            // Calculate the direction to the player
+            Vector3 direction = s_PlayerTransform.position - transform.position;
+
+            // Zero out the y-component to only rotate around the Y axis
             direction.y = 0;
-            Quaternion goalRotation = Quaternion.LookRotation(direction);
-            float angle = Quaternion.Angle(goalRotation, transform.rotation);
 
-            while (angle >= 2f)
+            // Ensure the direction vector is normalized (magnitude of 1)
+            if (direction.sqrMagnitude > 0.01f) // Avoid errors with very small vectors
             {
-                angle = Quaternion.Angle(goalRotation, transform.rotation);
+                direction.Normalize();
+            }
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, goalRotation, 10f * Time.deltaTime);
+            // Calculate the goal rotation (Quaternion)
+            Quaternion goalRotation = Quaternion.LookRotation(direction);
 
+            // Set a duration for the rotation
+            float rotationDuration = 1f;
+            float timer = 0f;
+
+            // Rotate smoothly over time
+            while (timer < rotationDuration)
+            {
+                // Lerp between the current rotation and the goal rotation
+                transform.rotation = Quaternion.Lerp(transform.rotation, goalRotation, timer / rotationDuration);
+
+                // Increment the timer
+                timer += Time.deltaTime;
+
+                // Yield until the next frame
                 yield return null;
             }
+
+            // Ensure final rotation is exactly the goal rotation
+            transform.rotation = goalRotation;
         }
 
         //Get the order from the barista
@@ -127,6 +144,7 @@ namespace Barista.Clients
             }
             else
             {
+                m_patienceBar.ShowAngryEmote();
                 ClientsFlowHandler.Instance.ProcessClientLeft();
                 m_clientTaskSystem.AddNewTask(LookTowardsStart());
                 m_clientTaskSystem.AddNewTask(LeaveProcess());

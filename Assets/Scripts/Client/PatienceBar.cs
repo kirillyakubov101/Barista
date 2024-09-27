@@ -34,6 +34,12 @@ namespace Barista.Clients
             StopCoroutine(m_coroutine);
         }
 
+        //for wrong order
+        public void ShowAngryEmote()
+        {
+            m_emoteHandler.ChangeEmote(Mood.Leaving);
+        }
+
         private IEnumerator WaitForOrderProcess()
         {
             float timer = 0f;

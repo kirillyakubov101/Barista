@@ -377,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2002611371138331614, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 666.7989
+      value: 766.3895
       objectReference: {fileID: 0}
     - target: {fileID: 2002611371138331614, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -501,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5218194481538456570, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 197.2663
+      value: 230.46317
       objectReference: {fileID: 0}
     - target: {fileID: 5218194481538456570, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -510,6 +510,14 @@ PrefabInstance:
     - target: {fileID: 6475608743884204504, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504504793544864223, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504504793544864223, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6608015882295382002, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
       propertyPath: m_Pivot.x
@@ -658,6 +666,18 @@ PrefabInstance:
     - target: {fileID: 7669348112645992037, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154566001113894814, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058451521240768605, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 21.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058451521240768605, guid: 9a992ce3c0f8f0c4ea229a9a6b9c67de, type: 3}
+      propertyPath: m_EffectDistance.y
+      value: -22.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -23,19 +23,16 @@ namespace AdvancedMenu
 
         public void LoadSceneAsync()
         {
+            Time.timeScale = 1f;
             StartCoroutine(LoadSceneAsyncProcesss());
         }
 
         public IEnumerator LoadSceneAsyncProcesss()
         {
-            Time.timeScale = 1f;
-
             yield return m_LoadingHandler.StartFadeIn();
-
             AsyncOperation operation = SceneManager.LoadSceneAsync(m_SceneToLoad);
             m_LoadingHandler.LoadYourAsyncScene(m_SceneToLoad,operation);
         }
-
 
         #region Getters & Setters
         //Getters & Setters
