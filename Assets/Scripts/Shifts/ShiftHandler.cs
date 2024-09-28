@@ -22,6 +22,9 @@ namespace Barista.Shift
         private bool m_isNightTimeEnabled = false;
         private WaitForSeconds m_delayTime = new WaitForSeconds(2f);
 
+        public int CurrentAmountOfClientsVisited { get => m_currentAmountOfClientsVisited; }
+        public int AmountOfShiftFailures { get => m_amountOfShiftFailures; }
+
         private void BeginPlay()
         {
             GameManager.Instance.ContinueGame();
@@ -85,8 +88,10 @@ namespace Barista.Shift
 
         private void InitRequiredClients()
         {
-            m_currentAmountOfDayTimeClients = GetRandomNumberOfClients(3, 7);
-            m_currentAmountOfNightTimeClients = GetRandomNumberOfClients(5, 8);
+            m_currentAmountOfDayTimeClients = 1;
+            m_currentAmountOfNightTimeClients = 1;
+           // m_currentAmountOfDayTimeClients = GetRandomNumberOfClients(3, 7);
+           // m_currentAmountOfNightTimeClients = GetRandomNumberOfClients(5, 8);
         }
 
         private void StartShift()
@@ -95,8 +100,6 @@ namespace Barista.Shift
 
         private void EndShift() 
         {
-            m_currentAmountOfClientsVisited = 0;
-            m_amountOfShiftFailures = 0;
             GameManager.Instance.PauseGame();
         }
         private void FailShift() 
