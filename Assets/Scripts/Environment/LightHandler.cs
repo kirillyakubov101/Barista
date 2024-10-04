@@ -4,31 +4,24 @@ namespace Barista.Environment
 {
     public class LightHandler : MonoBehaviour
     {
-        [SerializeField] private Light m_DirectionalLight;
-        [SerializeField] private LightPreset m_Preset;
-        [SerializeField,Range(0,24)] private float TimeOfDay;
+        [SerializeField] private Material m_GlowLightMat;
 
-        private void Update()
+        private const string c_EmissionVar = "_EmissionColor";
+        private const string c_EmissionKeyword = "_EMISSION";
+
+        private float m_turnOnIntensity = 1.0f;
+        private Color m_emissionColor = Color.white;
+
+        public void TurnOnLights()
         {
-            if(m_Preset)
-            {
-                TimeOfDay += Time.deltaTime * 0.1f;
-                TimeOfDay %= 24; //clamp from 0 -24
-                UpadteLighting(TimeOfDay);
-            }
+            m_GlowLightMat.SetColor(c_EmissionVar, m_emissionColor * m_turnOnIntensity);
+            m_GlowLightMat.EnableKeyword(c_EmissionKeyword);
         }
 
-        private void UpadteLighting(float timePercent)
+        public void TurnOffLights()
         {
-            RenderSettings.ambientLight = m_Preset.AmbientColor.Evaluate(TimeOfDay);
-            RenderSettings.fogColor = m_Preset.FogColor.Evaluate(TimeOfDay);
-
-            if(m_DirectionalLight)
-            {
-                m_DirectionalLight.color = m_Preset.DirectionalColor.Evaluate(TimeOfDay);
-                m_DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f),-30f,0f));
-            }
+            m_GlowLightMat.SetColor(c_EmissionVar, m_emissionColor * 0f);
+            m_GlowLightMat.EnableKeyword(c_EmissionKeyword);
         }
-
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 034f9ddcee35189418ce3b11f61a836d
   m_CachedHash:
     serializedVersion: 2
-    Hash: 4603648cc960c4fea821ebb4297fb465
+    Hash: d02f719668facb73f4893bee40f30653
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f495466b0a4512d40be2506e61e5e2da, type: 2}
   - {fileID: 11400000, guid: f125e9e542d4c7a4b8001d69920cb539, type: 2}
   - {fileID: 11400000, guid: 0b7d7d3c5abac6d4e9d2cbb1c217e973, type: 2}
+  - {fileID: 11400000, guid: a7a18ea434139904880064af33522ab0, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -88,6 +89,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Cars
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 403a77c39aedb764589324b94fdd72d3, type: 2}

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Cars
+  m_EditorClassIdentifier: 
+  m_GroupName: Cars
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d2ea296ebb9afd34882ecf674215ed7f
+  m_SerializeEntries:
+  - m_GUID: b431b7a70949fd34ba795b0f1eb3ac34
+    m_Address: Assets/Outdoor/Cars/FBX format/delivery.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Cars
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f2a090b4a995dd940b7f30c3052b4af0
+    m_Address: Assets/Outdoor/Cars/FBX format/firetruck.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Cars
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a0466ec29f8f6647b7720ef859a86d0
+    m_Address: Assets/Outdoor/Cars/FBX format/police.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Cars
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ffb560a38a9a0494a97ca6c215c2cfb1
+    m_Address: Assets/Outdoor/Cars/FBX format/sedan.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Cars
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3f7561643e0f1014592913c60bcca7a6
+    m_Address: Assets/Outdoor/Cars/FBX format/suv.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Cars
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e92576a1234da464d8779ec723f62004
+    m_Address: Assets/Outdoor/Cars/FBX format/suv-luxury.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Cars
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c748ffae9c0d34443b9299c626e7cd60
+    m_Address: Assets/Outdoor/Cars/FBX format/taxi.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Cars
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a29a0c6bdc863d2448eb89fc6e9f40cd, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ac115a8e1aa76054eb30ed41184b467c, type: 2}
+    - {fileID: 11400000, guid: 893e6a3c61fd1144dafc6f565bd2e3c2, type: 2}

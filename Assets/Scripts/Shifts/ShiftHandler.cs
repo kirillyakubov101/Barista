@@ -36,12 +36,15 @@ namespace Barista.Shift
             InitRequiredClients();
             OnStartShift.Invoke();
 
+            bool enteredNightTime = false;
+
             //outer game loop of the entire shift
             while(m_currentAmountOfClientsVisited < m_currentAmountOfDayTimeClients + m_currentAmountOfNightTimeClients)
             {
-                if(m_currentAmountOfClientsVisited == m_currentAmountOfDayTimeClients)
+                if(m_currentAmountOfClientsVisited == m_currentAmountOfDayTimeClients && !enteredNightTime)
                 {
                     NightTimeStart();
+                    enteredNightTime = true;
                 }
 
                 yield return m_delayTime;
@@ -89,7 +92,7 @@ namespace Barista.Shift
         private void InitRequiredClients()
         {
             m_currentAmountOfDayTimeClients = 1;
-            m_currentAmountOfNightTimeClients = 1;
+            m_currentAmountOfNightTimeClients = 3;
            // m_currentAmountOfDayTimeClients = GetRandomNumberOfClients(3, 7);
            // m_currentAmountOfNightTimeClients = GetRandomNumberOfClients(5, 8);
         }

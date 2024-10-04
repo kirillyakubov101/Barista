@@ -5,28 +5,29 @@ namespace Barista
 {
     public class LightSwitcher : MonoBehaviour
     {
-        [SerializeField] private Texture2D[] DarkLightMapDir, DarkLightMapColor;
+        //[SerializeField] private Texture2D[] DarkLightMapDir, DarkLightMapColor;
         [SerializeField] private Texture2D[] BrightLightMapDir, BrightLightMapColor;
 
-        public LightmapData[] m_darkLightMap, m_brightLightMap;
+        [SerializeField] private Material NightSkybox;
 
-        public bool test = false;
+        public LightmapData[] m_brightLightMap;
+
 
         private void Start()
         {
-            //Dark map
-            List<LightmapData> dlightmap = new List<LightmapData>();
+            ////Dark map
+            //List<LightmapData> dlightmap = new List<LightmapData>();
 
-            for (int i = 0; i < DarkLightMapDir.Length; i++)
-            {
-                LightmapData lmData = new LightmapData();
-                lmData.lightmapDir = DarkLightMapDir[i];
-                lmData.lightmapColor = DarkLightMapColor[i];
+            //for (int i = 0; i < DarkLightMapDir.Length; i++)
+            //{
+            //    LightmapData lmData = new LightmapData();
+            //    lmData.lightmapDir = DarkLightMapDir[i];
+            //    lmData.lightmapColor = DarkLightMapColor[i];
 
-                dlightmap.Add(lmData);
-            }
+            //    dlightmap.Add(lmData);
+            //}
 
-            m_darkLightMap = dlightmap.ToArray();
+            //m_darkLightMap = dlightmap.ToArray();
 
 
             //Light Map
@@ -42,31 +43,16 @@ namespace Barista
             }
 
             m_brightLightMap = blightmap.ToArray();
+
+
+            //LightmapSettings.lightmaps = m_darkLightMap;
         }
 
-        bool startWithoutLights = false;
-        private void Update()
-        {
-            if(test)
-            {
-                SwitchLightMaps(startWithoutLights);
-                startWithoutLights = !startWithoutLights;
-                test = false;
-            }
-        }
 
-        private void SwitchLightMaps(bool state)
+        public void ToggleNightLights()
         {
-            if (state)
-            {
-                LightmapSettings.lightmaps = m_darkLightMap;
-            }
-            else
-            {
-                LightmapSettings.lightmaps = m_brightLightMap;
-            }
-          
-            
+            LightmapSettings.lightmaps = m_brightLightMap;
+            RenderSettings.skybox = NightSkybox;
         }
     }
 }
