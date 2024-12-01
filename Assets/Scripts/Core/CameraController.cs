@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using MyUtils;
 using Barista.Input;
+using UnityEngine.Events;
 
 namespace Barista.MyCamera
 {
@@ -9,6 +10,7 @@ namespace Barista.MyCamera
     public class CameraController : Singleton<CameraController>
     {
         [SerializeField] private Camera[] m_cameras;
+        [SerializeField] private UnityEvent<bool> OnCenterCameraSwitchEvent;
 
         public static event Action<Camera> OnCameraSwitch;
 
@@ -43,6 +45,17 @@ namespace Barista.MyCamera
         {
             if (value > 0) { m_activeCameraIndex = (m_activeCameraIndex + 1) % 3; }
             else { m_activeCameraIndex = (m_activeCameraIndex - 1 + 3) % 3; }
+
+
+            //fixing the submit/remove panel being targeted by none center camera (even if the center camera is off)
+            if(m_activeCameraIndex != 1)
+            {
+                OnCenterCameraSwitchEvent?.Invoke(false);
+            }
+            else
+            {
+                OnCenterCameraSwitchEvent?.Invoke(true);
+            }
 
             Rotate();
         }
