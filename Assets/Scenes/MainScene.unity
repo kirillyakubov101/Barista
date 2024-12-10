@@ -13597,8 +13597,8 @@ MonoBehaviour:
   m_UVScale: {x: 0.3, y: 0.3}
   m_UVBias: {x: 2.01, y: 0.683}
   m_ScaleMode: 0
-  m_Offset: {x: -0.014009688, y: 0.037989736, z: 0.5577106}
-  m_Size: {x: 1.156736, y: 1.0759795, z: 0.88458085}
+  m_Offset: {x: -0.014009714, y: 0.037989736, z: 0.7062}
+  m_Size: {x: 1.156736, y: 1.0759795, z: 0.5876019}
   m_FadeFactor: 1
 --- !u!1001 &1828782667
 PrefabInstance:
@@ -15007,6 +15007,10 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 1
+  - m_AssetGUID: f9b87f6bace892749ab8fe9cea37e98a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1001 &1970478592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20996,6 +21000,10 @@ PrefabInstance:
     - target: {fileID: 3859616965196388263, guid: 3012e04b87f916a4d96f4018fa55e750, type: 3}
       propertyPath: m_Name
       value: Espresso Machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3939167076335918541, guid: 3012e04b87f916a4d96f4018fa55e750, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

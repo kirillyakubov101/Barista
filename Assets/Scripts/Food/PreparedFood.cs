@@ -58,6 +58,8 @@ namespace Barista.Food
             {
                 m_Expired = true;
                 m_expiredFoodVFX.Play();
+                m_outline.OutlineColor = m_outline.TrashOutline;
+                m_outline.UpdateMatsRuntime();
             }
         }
     }
