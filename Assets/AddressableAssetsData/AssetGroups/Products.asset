@@ -67,8 +67,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f9b87f6bace892749ab8fe9cea37e98a
-    m_Address: Assets/Prefab/Clients/Client_Tom.prefab
+  - m_GUID: f00fe0297da557a46b598a745ebb6a35
+    m_Address: Assets/Prefab/FoodMenu_Adressables/Cookie.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

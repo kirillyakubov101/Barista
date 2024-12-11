@@ -12,7 +12,8 @@ namespace Barista.Food
         Lemonade,
         Croissant,
         Toast,
-        Capcake
+        Capcake,
+        Cookie,
     } 
 
 }

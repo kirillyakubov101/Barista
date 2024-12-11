@@ -22,6 +22,7 @@ namespace Barista.Factory
         [SerializeField] private AssetReferenceGameObject m_Croissant;
         [SerializeField] private AssetReferenceGameObject m_Toast;
         [SerializeField] private AssetReferenceGameObject m_Capcake;
+        [SerializeField] private AssetReferenceGameObject m_Cookie;
 
 
         private Dictionary<FoodType, AssetReferenceGameObject> m_foods = new Dictionary<FoodType, AssetReferenceGameObject>();
@@ -37,6 +38,7 @@ namespace Barista.Factory
             m_foods.Add(FoodType.Croissant, m_Croissant);
             m_foods.Add(FoodType.Toast, m_Toast);
             m_foods.Add(FoodType.Capcake, m_Capcake);
+            m_foods.Add(FoodType.Cookie, m_Cookie);
         }
 
         public async Task<GameObject> LoadFood(FoodType food)
