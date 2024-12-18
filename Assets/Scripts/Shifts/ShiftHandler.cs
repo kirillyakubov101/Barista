@@ -15,11 +15,12 @@ namespace Barista.Shift
         public UnityEvent OnNightTimeStart;
 
         private const int c_maxShiftFailures = 3;
-        private int m_currentAmountOfDayTimeClients = -1; //to serve
-        private int m_currentAmountOfClientsVisited = 0; //served
-        private int m_amountOfShiftFailures = 0;
-        private int m_currentAmountOfNightTimeClients = -1; //to serve
-        private bool m_isNightTimeEnabled = false;
+        [SerializeField] private int m_currentAmountOfDayTimeClients = 10; //to serve
+        [SerializeField] private int m_currentAmountOfClientsVisited = 0; //served
+        [SerializeField] private int m_amountOfShiftFailures = 0;
+        [SerializeField] private int m_currentAmountOfNightTimeClients = 10; //to serve
+        [SerializeField] private bool m_isNightTimeEnabled = false;
+
         private WaitForSeconds m_delayTime = new WaitForSeconds(2f);
 
         public int CurrentAmountOfClientsVisited { get => m_currentAmountOfClientsVisited; }
@@ -33,7 +34,7 @@ namespace Barista.Shift
 
         private IEnumerator MainGameLoop()
         {
-            InitRequiredClients();
+            //InitRequiredClients();
             OnStartShift.Invoke();
 
             bool enteredNightTime = false;
