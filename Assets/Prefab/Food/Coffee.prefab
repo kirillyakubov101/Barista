@@ -489,6 +489,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_outline: {fileID: 2085625773501759088}
   m_foodType: 4
+  m_TimeToExpire: 5
+  m_expiredFoodVFX: {fileID: 0}
 --- !u!4 &3518067535036552122 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3670466655989414452, guid: 71e2437bc5a4576408f4f396f19c1dc2, type: 3}

@@ -15,6 +15,7 @@ namespace Barista.Clients
 
 
         private List<int> recentIndices = new List<int>(); // Tracks recently spawned indices
+        
 
 
         public void SpawnNewClient(Action<GameObject> callback,Vector3 pos, Quaternion rot)
@@ -46,6 +47,8 @@ namespace Barista.Clients
                 // Add index multiple times if not recently spawned, to increase probability
                 if (!recentIndices.Contains(i))
                 {
+
+                    validIndices.Add(i);
                     validIndices.Add(i);
                     validIndices.Add(i); // Increase weight for non-recent indices
                 }
@@ -73,9 +76,6 @@ namespace Barista.Clients
                 recentIndices.RemoveAt(0);
             }
         }
-
-
-
 
         public void Release(GameObject obj)
         {

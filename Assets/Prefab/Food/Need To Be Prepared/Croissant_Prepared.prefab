@@ -179,7 +179,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_outline: {fileID: 3057561087629734031}
   m_foodType: 7
-  m_progressMeter: {fileID: 0}
   m_graphics: {fileID: 861483087767176469}
   m_placeHolder: {fileID: 0}
-  m_RefilTime: 3
+  m_RefilTime: 10
+  m_progressMeter: {fileID: 0}
+  m_TimeToExpire: 5
+  m_expiredFoodVFX: {fileID: 0}

@@ -524,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4247496246577488551, guid: 71e2437bc5a4576408f4f396f19c1dc2, type: 3}
       propertyPath: m_RefilTime
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4247496246577488551, guid: 71e2437bc5a4576408f4f396f19c1dc2, type: 3}
       propertyPath: m_progressMeter

@@ -85,7 +85,7 @@ MonoBehaviour:
   m_foodType: 7
   m_graphics: {fileID: 7493730627720571767}
   m_placeHolder: {fileID: 5452435962494392124}
-  m_RefilTime: 3
+  m_RefilTime: 10
   m_progressMeter: {fileID: 8185012387188685666}
 --- !u!1 &5452435962494392124
 GameObject:

@@ -118,7 +118,7 @@ Transform:
   - {fileID: 9010104537900483648}
   - {fileID: 7610325553710726792}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2040235586257532745
 SphereCollider:
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_foodType: 3
   m_graphics: {fileID: 104986377844279984}
   m_placeHolder: {fileID: 4743776464282305664}
-  m_RefilTime: 3
+  m_RefilTime: 6
   m_progressMeter: {fileID: 6664989128896221377}
 --- !u!114 &1935447695222669124
 MonoBehaviour:

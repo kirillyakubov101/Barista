@@ -149,7 +149,7 @@ MonoBehaviour:
   m_foodType: 10
   m_graphics: {fileID: 104986377844279984}
   m_placeHolder: {fileID: 4743776464282305664}
-  m_RefilTime: 3
+  m_RefilTime: 7
   m_progressMeter: {fileID: 6664989128896221377}
 --- !u!114 &1935447695222669124
 MonoBehaviour:
